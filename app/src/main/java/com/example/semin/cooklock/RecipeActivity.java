@@ -1,19 +1,23 @@
 package com.example.semin.cooklock;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
 public class RecipeActivity extends ListActivity {
-
+    TextView txt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
+        //deleteDatabase("recipe.db");
         loadDB();
     }
 
@@ -21,6 +25,14 @@ public class RecipeActivity extends ListActivity {
     protected void onResume() {
         super.onResume();
         loadDB();
+    }
+
+    public void onClickButton(View view) {
+        txt = (TextView)findViewById(R.id.text1);
+
+        Intent i = new Intent(RecipeActivity.this, CookingActivity.class);
+        i.putExtra("name", txt.getText().toString());
+        startActivity(i);
     }
 
     public void loadDB() {
