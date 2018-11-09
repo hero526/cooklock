@@ -14,13 +14,13 @@ public class RecipeActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
-        //loadDB();
+        loadDB();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        //loadDB();
+        loadDB();
     }
 
     public void loadDB() {
@@ -33,15 +33,15 @@ public class RecipeActivity extends ListActivity {
 
         db.execSQL("INSERT INTO recipe(name, ingredient, img, howto) VALUES('라면', '라면', 'http://temp', '잘')");
 
-        Cursor c = db.rawQuery("SELECT name, ingredient FROM recipe;", null);
+        Cursor c = db.rawQuery("SELECT _id, name, ingredient FROM recipe;", null);
         startManagingCursor(c);
 
         ListAdapter adapt = new SimpleCursorAdapter(
                 this,
                 R.layout.recipelist,
                 c,
-                new String[]{"name", "ingredient"},
-                new int[]{R.id.text1, R.id.text2}, 0);
+                new String[] {"name", "ingredient"},
+                new int[] {R.id.text1, R.id.text2}, 0);
 
         setListAdapter(adapt);
 
