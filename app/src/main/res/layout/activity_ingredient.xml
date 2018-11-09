@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".IngredientActivity">
-        <EditText
-            android:id="@+id/ingredient"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <AutoCompleteTextView
+        android:id="@+id/ingredient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
         <ImageView
-            android:src="@drawable/ic_launcher_foreground"
+            android:src="@drawable/search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
