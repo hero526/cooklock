@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,7 +28,8 @@ import java.util.TimerTask;
 public class CookingActivity extends AppCompatActivity {
     String foodid;
     int sessionNum = 0;
-    ;
+    Bitmap bitmap;
+
     int cur_sessionNum = 0;
     ArrayList<Recipe_Seq> list = new ArrayList<>();
     Recipe_Seq cur_session;
@@ -93,19 +95,38 @@ public class CookingActivity extends AppCompatActivity {
             cur_session = list.get(cur_sessionNum);
             ((TextView) findViewById(R.id.sessionNum))
                     .setText(Integer.toString(cur_session.getRecipe_session()));
-/*
-         URL sessionImage = null;
+
+         ImageView imageView = (ImageView) findViewById(R.id.sessionImage);
+
+
+         Thread mThread = new Thread() {
+             @Override
+             public void run() {
+                 try {
+                     URL url = new URL(cur_session.getRecipe_session_Image());
+
+                     HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                     conn.setDoInput(true);
+                     conn.connect();
+
+                     InputStream is = conn.getInputStream();
+                     bitmap = BitmapFactory.decodeStream(is);
+                 } catch (MalformedURLException e) {
+                     e.printStackTrace();
+                 } catch (IOException e) {
+                     e.printStackTrace();
+                 }
+             }
+         };
+
+         mThread.start();
          try {
-             sessionImage = new URL(cur_session.getRecipe_session_Image());
-             Bitmap bitmap = BitmapFactory.decodeStream(sessionImage.openStream());
-             ((ImageView)findViewById(R.id.sessionImage))
-                    .setImageBitmap(bitmap);
-         } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-*/
+             mThread.join();
+             imageView.setImageBitmap(bitmap);
+         } catch (InterruptedException e) {
+         }
+
+
             ((TextView) findViewById(R.id.sessionDisp))
                     .setText(cur_session.getRecipe_display());
 

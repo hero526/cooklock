@@ -11,12 +11,12 @@
         android:id="@+id/sessionNum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    <!--
+
     <ImageView
         android:id="@+id/sessionImage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-        -->
+        android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/sessionDisp"
         android:layout_width="match_parent"
