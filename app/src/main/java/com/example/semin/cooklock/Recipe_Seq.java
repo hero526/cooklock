@@ -6,9 +6,9 @@ public class Recipe_Seq {
     private int recipe_id;
     private int recipe_session;
     private String recipe_display;
-    private ImageView recipe_session_Image;
+    private String recipe_session_Image;
 
-    public Recipe_Seq(int recipe_id, int recipe_session, String recipe_display, ImageView recipe_session_Image) {
+    public Recipe_Seq(int recipe_id, int recipe_session, String recipe_display, String recipe_session_Image) {
         this.recipe_id = recipe_id;
         this.recipe_session = recipe_session;
         this.recipe_display = recipe_display;
@@ -39,11 +39,11 @@ public class Recipe_Seq {
         this.recipe_display = recipe_display;
     }
 
-    public ImageView getRecipe_session_Image() {
+    public String getRecipe_session_Image() {
         return recipe_session_Image;
     }
 
-    public void setRecipe_session_Image(ImageView recipe_session_Image) {
+    public void setRecipe_session_Image(String recipe_session_Image) {
         this.recipe_session_Image = recipe_session_Image;
     }
 }

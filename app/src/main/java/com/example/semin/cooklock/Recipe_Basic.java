@@ -10,9 +10,9 @@ public class Recipe_Basic {
     private String recipe_time;
     private String recipe_kcal;
     private String recipe_level;
-    private ImageView recipe_Image;
+    private String recipe_Image;
 
-    public Recipe_Basic(int recipe_id, String recipe_name, String recipe_expain, String recipe_type, String recipe_time, String recipe_kcal, String recipe_level, ImageView recipe_Image) {
+    public Recipe_Basic(int recipe_id, String recipe_name, String recipe_expain, String recipe_type, String recipe_time, String recipe_kcal, String recipe_level, String recipe_Image) {
         this.recipe_id = recipe_id;
         this.recipe_name = recipe_name;
         this.recipe_expain = recipe_expain;
@@ -79,11 +79,11 @@ public class Recipe_Basic {
         this.recipe_level = recipe_level;
     }
 
-    public ImageView getRecipe_Image() {
+    public String getRecipe_Image() {
         return recipe_Image;
     }
 
-    public void setRecipe_Image(ImageView recipe_Image) {
+    public void setRecipe_Image(String recipe_Image) {
         this.recipe_Image = recipe_Image;
     }
 }

@@ -8,57 +8,45 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class RecipeActivity extends ListActivity {
-    TextView txt;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
-        //deleteDatabase("recipe.db");
-        loadDB();
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        loadDB();
-    }
+        ListView listView;
+        InputStream inputStream = getResources().openRawResource(R.raw.recipe_basic);
 
-    public void onClickButton(View view) {
-        txt = (TextView)findViewById(R.id.text1);
+        Scanner scanner = new Scanner(inputStream);
+        ArrayList<Recipe_Basic> list = new ArrayList<>();
 
-        Intent i = new Intent(RecipeActivity.this, CookingActivity.class);
-        i.putExtra("name", txt.getText().toString());
-        startActivity(i);
-    }
-
-    public void loadDB() {
-        SQLiteDatabase db = openOrCreateDatabase(
-                "recipe.db",
-                SQLiteDatabase.CREATE_IF_NECESSARY,
-                null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS recipe "
-                + "(_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, ingredient TEXT, img TEXT, howto TEXT);");
-
-        db.execSQL("INSERT INTO recipe(name, ingredient, img, howto) VALUES('라면', '라면', 'http://temp', '잘')");
-
-        Cursor c = db.rawQuery("SELECT _id, name, ingredient FROM recipe;", null);
-        startManagingCursor(c);
-
-        ListAdapter adapt = new SimpleCursorAdapter(
-                this,
-                R.layout.recipelist,
-                c,
-                new String[] {"name", "ingredient"},
-                new int[] {R.id.text1, R.id.text2}, 0);
-
-        setListAdapter(adapt);
-
-        if (db != null) {
-            db.close();
+        scanner.nextLine();
+        while(scanner.hasNextLine()){
+            String[] data = scanner.nextLine().split(",");
+            try {
+                list.add(new Recipe_Basic(Integer.parseInt(data[0]),data[1],
+                        data[2],data[4],data[7],data[8],data[10],data[13]));
+            }catch(NumberFormatException e){
+                continue;
+            }catch(ArrayIndexOutOfBoundsException e){
+                continue;
+            }
         }
+        scanner.close();
+
+
     }
+
+
 }
