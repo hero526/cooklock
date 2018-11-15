@@ -22,7 +22,7 @@ public class IngredientActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredient);
-        ingredient_text = (AutoCompleteTextView) findViewById(R.id.ingredient);
+
 
         InputStream inputStream = getResources().openRawResource(R.raw.recipe_ingrident);
 
@@ -32,12 +32,9 @@ public class IngredientActivity extends AppCompatActivity {
         scanner.nextLine();
         while(scanner.hasNextLine()){
             String[] data = scanner.nextLine().split(",");
-            System.out.println(data[2]);
-
             try {
-                if(!list_ing.contains(data[2])){
                     list_ing.add(new String(data[2]));
-                }
+
 
             }catch(NumberFormatException e){
                 continue;
@@ -47,21 +44,27 @@ public class IngredientActivity extends AppCompatActivity {
         }
 
         scanner.close();
-        String[] ingredient_list = new String[list_ing.size() ];
-        list_ing.toArray( ingredient_list );
-        System.out.println("list");
-        System.out.println(ingredient_list[1]);
+
+        HashSet<String> distinctData = new HashSet<String>(list_ing);
+        list_ing = new ArrayList<String>(distinctData);
 
 
 
+        ingredient_text = (AutoCompleteTextView) findViewById(R.id.ingredient);
+        String[] ingrident = new String[list_ing.size()];
+        ingrident = list_ing.toArray(ingrident);
 
+        for(String s : ingrident)
+            System.out.println(s);
 
         ingredient_text.setAdapter(
                 new ArrayAdapter<String>(
-                        IngredientActivity.this,R.layout.support_simple_spinner_dropdown_item,ingredient_list
+                        IngredientActivity.this,R.layout.support_simple_spinner_dropdown_item,ingrident
                 )
         );
         select_button = (Button)findViewById(R.id.SelectButton);
+
+
         select_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
