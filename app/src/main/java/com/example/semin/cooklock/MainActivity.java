@@ -22,4 +22,9 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, RecipeActivity.class);
         startActivity(i);
     }
+
+    public void debug_complete(View view) {
+        Intent i = new Intent(this, CompleteActivity.class);
+        startActivity(i);
+    }
 }
