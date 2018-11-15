@@ -1,9 +1,10 @@
 package com.example.semin.cooklock;
 
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 public class Recipe_Basic {
-    private int recipe_id;
+    private String recipe_id;
     private String recipe_name;
     private String recipe_expain;
     private String recipe_type;
@@ -12,7 +13,7 @@ public class Recipe_Basic {
     private String recipe_level;
     private String recipe_Image;
 
-    public Recipe_Basic(int recipe_id, String recipe_name, String recipe_expain, String recipe_type, String recipe_time, String recipe_kcal, String recipe_level, String recipe_Image) {
+    public Recipe_Basic(String recipe_id, String recipe_name, String recipe_expain, String recipe_type, String recipe_time, String recipe_kcal, String recipe_level, String recipe_Image) {
         this.recipe_id = recipe_id;
         this.recipe_name = recipe_name;
         this.recipe_expain = recipe_expain;
@@ -23,11 +24,11 @@ public class Recipe_Basic {
         this.recipe_Image = recipe_Image;
     }
 
-    public int getRecipe_id() {
+    public String getRecipe_id() {
         return recipe_id;
     }
 
-    public void setRecipe_id(int recipe_id) {
+    public void setRecipe_id(String recipe_id) {
         this.recipe_id = recipe_id;
     }
 
