@@ -31,4 +31,11 @@
         android:onClick="debug_complete"
         android:layout_gravity="center_horizontal"/>
 
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="checkDataInput"
+        android:text="이달의 제철 재료" />
+
 </LinearLayout>
