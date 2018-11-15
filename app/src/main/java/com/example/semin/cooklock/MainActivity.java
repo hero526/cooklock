@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void debug_complete(View view) {
-        Intent i = new Intent(this, CompleteActivity.class);
+        Intent i = new Intent(this, CookingActivity.class);
         startActivity(i);
     }
 }

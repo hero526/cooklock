@@ -3,18 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CookingActivity">
+    tools:context=".CookingActivity"
+    android:orientation="vertical">
+
 
     <TextView
         android:id="@+id/sessionNum"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
+    <!--
     <ImageView
         android:id="@+id/sessionImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+        -->
     <TextView
         android:id="@+id/sessionDisp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="다음"
+        android:onClick="onClickButton"/>
+
+
 </LinearLayout>

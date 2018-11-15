@@ -2,7 +2,7 @@ package com.example.semin.cooklock;
 
 import android.widget.ImageView;
 
-public class Recipe_Seq {
+public class Recipe_Seq implements  Comparable<Recipe_Seq>{
     private int recipe_id;
     private int recipe_session;
     private String recipe_display;
@@ -13,6 +13,13 @@ public class Recipe_Seq {
         this.recipe_session = recipe_session;
         this.recipe_display = recipe_display;
         this.recipe_session_Image = recipe_session_Image;
+    }
+
+    @Override
+    public int compareTo(Recipe_Seq s) {
+        if (this.recipe_session < s.getRecipe_session()) return -1;
+        else if (this.recipe_session > s.getRecipe_session()) return 1;
+        return 0;
     }
 
     public int getRecipe_id() {
