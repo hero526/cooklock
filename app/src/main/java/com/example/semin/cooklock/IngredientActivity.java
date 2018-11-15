@@ -54,6 +54,10 @@ public class IngredientActivity extends AppCompatActivity {
         String[] ingrident = new String[list_ing.size()];
         ingrident = list_ing.toArray(ingrident);
 
+        for(int i = 0; i<ingrident.length;i++){
+            ingrident[i] = ingrident[i].replaceAll("\"","");
+        }
+
         for(String s : ingrident)
             System.out.println(s);
 
