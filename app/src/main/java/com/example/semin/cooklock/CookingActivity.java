@@ -57,13 +57,11 @@ public class CookingActivity extends AppCompatActivity {
             try {
                 if (data.length == 3) {
                     if (data[1].equals(foodid)) {
-                        System.out.println("data[0] = " + data[0]);
                         list.add(new Recipe_Seq(Integer.parseInt(data[0]), Integer.parseInt(data[1]), data[2], ""));
                         sessionNum++;
                     }
                 } else {
                     if (data[0].equals(foodid)) {
-                        System.out.println("data[0] = " + data[0]);
                         list.add(new Recipe_Seq(Integer.parseInt(data[0]), Integer.parseInt(data[1]), data[2], data[3]));
                         sessionNum++;
                     }
@@ -80,52 +78,48 @@ public class CookingActivity extends AppCompatActivity {
 
         Collections.sort(list);
 
-        ((TextView) findViewById(R.id.sessionNum))
-                .setText("0");
         ((TextView) findViewById(R.id.sessionDisp))
                 .setText("요리를 시작합니다.");
     }
 
     public void onClickButton(View view) {
-        if(cur_sessionNum==sessionNum) {
+        if (cur_sessionNum == sessionNum) {
             Intent i = new Intent(this, CompleteActivity.class);
             startActivity(i);
-        }
-        else {
+        } else {
             cur_session = list.get(cur_sessionNum);
-            ((TextView) findViewById(R.id.sessionNum))
-                    .setText(Integer.toString(cur_session.getRecipe_session()));
 
-         ImageView imageView = (ImageView) findViewById(R.id.sessionImage);
+            ImageView imageView = (ImageView) findViewById(R.id.sessionImage);
 
 
-         Thread mThread = new Thread() {
-             @Override
-             public void run() {
-                 try {
-                     URL url = new URL(cur_session.getRecipe_session_Image());
+            Thread mThread = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        URL url = new URL(cur_session.getRecipe_session_Image());
 
-                     HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-                     conn.setDoInput(true);
-                     conn.connect();
+                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                        conn.setDoInput(true);
+                        conn.connect();
 
-                     InputStream is = conn.getInputStream();
-                     bitmap = BitmapFactory.decodeStream(is);
-                 } catch (MalformedURLException e) {
-                     e.printStackTrace();
-                 } catch (IOException e) {
-                     e.printStackTrace();
-                 }
-             }
-         };
+                        InputStream is = conn.getInputStream();
+                        bitmap = BitmapFactory.decodeStream(is);
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
 
-         mThread.start();
-         try {
-             mThread.join();
-             imageView.setImageBitmap(bitmap);
-         } catch (InterruptedException e) {
-         }
-
+            if (cur_session.getRecipe_session_Image() != "") {
+                mThread.start();
+                try {
+                    mThread.join();
+                    imageView.setImageBitmap(bitmap);
+                } catch (InterruptedException e) {
+                }
+            }
 
             ((TextView) findViewById(R.id.sessionDisp))
                     .setText(cur_session.getRecipe_display());
