@@ -48,8 +48,8 @@ public class CookingActivity extends AppCompatActivity {
 
         Intent i = getIntent();
 
-        //foodid = i.getExtras().getString("foodid");
-        foodid = "195453";
+        foodid = i.getExtras().getString("foodid");
+        //foodid = "195453";
 
         scanner.nextLine();
         while (scanner.hasNextLine()) {

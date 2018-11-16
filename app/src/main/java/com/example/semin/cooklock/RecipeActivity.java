@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -50,8 +51,15 @@ public class RecipeActivity extends AppCompatActivity {
         }
         scanner.close();
 
-
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Recipe_Basic recipe = (Recipe_Basic) Myadapter.getItem(position);
+                Intent i = new Intent(getApplicationContext(),CookingActivity.class);
+                i.putExtra("foodid",recipe.getRecipe_id());
+                startActivity(i);
+            }
+        });
     }
 
 
