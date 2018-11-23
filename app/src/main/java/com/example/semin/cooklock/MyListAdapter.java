@@ -21,7 +21,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class MyListAdapter extends BaseAdapter {
-    private ArrayList<Recipe_Basic> listViewItemList = new ArrayList<Recipe_Basic>() ;
+    public ArrayList<Recipe_Basic> listViewItemList = new ArrayList<Recipe_Basic>() ;
     Bitmap bitmap;
     // ListViewAdapter의 생성자
     public MyListAdapter() {
