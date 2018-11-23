@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
 public class Recipe_Seq implements  Comparable<Recipe_Seq>{
+
     private int recipe_id;
     private int recipe_session;
     private String recipe_display;
