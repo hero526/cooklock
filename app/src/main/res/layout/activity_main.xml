@@ -11,19 +11,19 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="70dp"
         android:orientation="horizontal">
 
         <EditText
             android:layout_width="161dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="150dp"
             android:hint="원하는 레시피를 입력해주세요!" />
 
         <ImageButton
             android:id="@+id/button2"
-            android:layout_width="57dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
             android:backgroundTint="@android:color/transparent"
             android:onClick="showRecipe"
             android:scaleType="centerCrop"
