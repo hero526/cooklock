@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/plztestBackground"
     android:orientation="vertical"
     tools:context=".MainActivity">
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageButton
+            android:id="@+id/button2"
+            android:layout_width="71dp"
+            android:layout_height="66dp"
+            android:layout_gravity="right"
+            android:onClick="showRecipe"
+            app:srcCompat="@drawable/searchRecipeButton" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/month_ingredient"
         android:layout_width="match_parent"
@@ -17,35 +35,30 @@
         android:gravity="center"
         android:textColor="#ff0400ff"
         android:textSize = "30dp"/>
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="재료검색"
-        android:onClick="showIngredient"
-        android:layout_gravity="center_horizontal"/>
+
+
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="레시피검색"
-        android:onClick="showRecipe"
-        android:layout_gravity="center_horizontal"/>
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="173dp"
+        android:onClick="checkDataInput"
+        android:text="이달의 제철 재료" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="243dp"
+        android:layout_height="171dp"
+        android:layout_gravity="center_horizontal"
+        android:onClick="showIngredient"
+        android:text="재료검색" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="커뮤니티(미구현)"
+        android:layout_gravity="center_horizontal"
         android:onClick="debug_complete"
-        android:layout_gravity="center_horizontal"/>
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="checkDataInput"
-        android:text="이달의 제철 재료" />
+        android:text="커뮤니티(미구현)" />
 
 </LinearLayout>

@@ -6,7 +6,6 @@
     tools:context=".CookingActivity"
     android:orientation="vertical">
 
-
     <ImageView
         android:id="@+id/sessionImage"
         android:layout_width="match_parent"
@@ -26,5 +25,9 @@
         android:text="다음"
         android:onClick="onClickButton"/>
 
-
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
 </LinearLayout>
