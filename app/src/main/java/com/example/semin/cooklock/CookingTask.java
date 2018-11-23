@@ -5,7 +5,6 @@ import android.widget.TextView;
 
 public class CookingTask extends AsyncTask<Integer, Integer, Integer> {
     TextView mOutput;
-    int mCount = 0;
 
     public void setOutputView(TextView txt) {
         mOutput = txt;
@@ -23,8 +22,9 @@ public class CookingTask extends AsyncTask<Integer, Integer, Integer> {
         } catch (InterruptedException e) {
         }
 
-        for(int i = integers[0]-1; i >= 0; i--) {
-            for(int j = 59; j >= 0; j--) {
+        for (int i = integers[0] - 1; i >= 0; i--) {
+            for (int j = 59; j >= 0; j--) {
+                if (this.isCancelled()) return 1;
                 publishProgress(i, j); // trigger the execution of onProgressUpdate( )
                 try {
                     Thread.sleep(1000);
