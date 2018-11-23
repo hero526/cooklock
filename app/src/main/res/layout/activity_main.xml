@@ -8,34 +8,34 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/button2"
+        android:layout_width="286dp"
         android:layout_height="wrap_content"
-        android:text="재료검색"
-        android:onClick="showIngredient"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:onClick="showRecipe"
+        android:text="레시피검색" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="레시피검색"
-        android:onClick="showRecipe"
-        android:layout_gravity="center_horizontal"/>
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="173dp"
+        android:onClick="checkDataInput"
+        android:text="이달의 제철 재료" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="243dp"
+        android:layout_height="171dp"
+        android:layout_gravity="center_horizontal"
+        android:onClick="showIngredient"
+        android:text="재료검색" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="커뮤니티(미구현)"
+        android:layout_gravity="center_horizontal"
         android:onClick="debug_complete"
-        android:layout_gravity="center_horizontal"/>
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="checkDataInput"
-        android:text="이달의 제철 재료" />
+        android:text="커뮤니티(미구현)" />
 
 </LinearLayout>

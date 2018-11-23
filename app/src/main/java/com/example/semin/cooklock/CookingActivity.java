@@ -1,4 +1,4 @@
-﻿package com.example.semin.cooklock;
+package com.example.semin.cooklock;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -86,6 +87,9 @@ public class CookingActivity extends AppCompatActivity {
                 .setText("요리를 시작합니다.");
         ((Button) findViewById(R.id.nextButton))
                 .setText("시작");
+
+        ((ProgressBar) findViewById(R.id.progressBar))
+                .setMax(sessionNum);
     }
 
     public void onClickButton(View view) {
@@ -131,13 +135,14 @@ public class CookingActivity extends AppCompatActivity {
                     .setText(cur_session.getRecipe_display());
 
             cur_sessionNum++;
-            final View view1 = view;
-            view.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    onClickButton(view1);
-                }
-            }, 3000);
+
+            ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+            progressBar.setProgress(cur_sessionNum);
+            // TODO: get remain time
+            if(sessionTime != INF) {
+                //TODO: IF has remain time, run cooking Task
+            }
         }
     }
 }
