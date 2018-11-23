@@ -41,8 +41,8 @@ public class CookingActivity extends AppCompatActivity {
     Recipe_Seq cur_session;
 
     final int INF = 999;
-    private int remain_Time = INF;
-    private int session_Time = INF;
+    private int remain_Time = 0;
+    private int session_Time = 0;
 
     CookingTask mTask;
     boolean mBreak = true;
@@ -164,17 +164,30 @@ public class CookingActivity extends AppCompatActivity {
                 ((TextView)findViewById(R.id.remainTime)).setText("+1분");
             }
 
-            if(session_Time != INF) {
+            if(session_Time != 0) {
                 settingTimer(view);
             }
         }
     }
 
     public void settingTimer(View view) {
-        try {
-            cancelWork(view);
-        } catch (Exception e) {
+        if(view.getId() == R.id.remainTime) {
+            if(session_Time == 0) {
+                try {
+                    cancelWork(view);
+                } catch (Exception e) {
+                }
+                session_Time = 1;
+            }
+            else return;
         }
+        else {
+            try {
+                cancelWork(view);
+            } catch (Exception e) {
+            }
+        }
+
         if (mBreak) {
             mBreak = false;
             mTask = new CookingTask();
@@ -187,5 +200,6 @@ public class CookingActivity extends AppCompatActivity {
 
     public void cancelWork(View v) {
         mTask.cancel(true);
+        session_Time = 0;
     }
 }
