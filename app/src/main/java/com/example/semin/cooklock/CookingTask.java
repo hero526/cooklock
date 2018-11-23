@@ -14,38 +14,42 @@ public class CookingTask extends AsyncTask<Integer, Integer, Integer> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        mCount = 0;
     }
 
     @Override
     protected Integer doInBackground(Integer... integers) {
-        for(int i = 0; i < integers[0]; i++) {
-            mCount++;
-            publishProgress(mCount); // trigger the execution of onProgressUpdate( )
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {;}
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
         }
 
-        return mCount;
+        for(int i = integers[0]-1; i >= 0; i--) {
+            for(int j = 59; j >= 0; j--) {
+                publishProgress(i, j); // trigger the execution of onProgressUpdate( )
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                }
+            }
+        }
+        return 0;
     }
 
     @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
-        mOutput.setText(values[0]);
+        mOutput.setText(String.format("%02d", values[0]) + ":" + String.format("%02d", values[1]));
     }
 
     @Override
     protected void onPostExecute(Integer integer) {
         super.onPostExecute(integer);
-        mOutput.setText("결과: " + integer);
     }
 
     @Override
     protected void onCancelled(Integer integer) {
         super.onCancelled(integer);
-        mOutput.setText("취소됨");
+        //mOutput.setText("취소됨");
     }
 }
 

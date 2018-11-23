@@ -3,27 +3,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CookingActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".CookingActivity">
 
     <ImageView
         android:id="@+id/sessionImage"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:scaleType="fitCenter"
-        android:src="@android:drawable/ic_menu_help"/>
+        android:src="@android:drawable/ic_menu_help" />
 
     <TextView
         android:id="@+id/sessionDisp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/nextButton"
+    <TextView
+        android:id="@+id/remainTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="다음"
-        android:onClick="onClickButton"/>
+        android:onClick="settingTimer"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="15pt" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/prevButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onClickButton"
+            android:text="이전"/>
+
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="onClickButton"
+            android:text="다음" />
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progressBar"

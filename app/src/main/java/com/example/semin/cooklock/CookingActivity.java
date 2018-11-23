@@ -28,6 +28,8 @@ import java.util.Collections;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CookingActivity extends AppCompatActivity {
     String foodid;
@@ -39,8 +41,11 @@ public class CookingActivity extends AppCompatActivity {
     Recipe_Seq cur_session;
 
     final int INF = 999;
-    private int remainTime = INF;
-    private int sessionTime = INF;
+    private int remain_Time = INF;
+    private int session_Time = INF;
+
+    CookingTask mTask;
+    boolean mBreak = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,9 +98,17 @@ public class CookingActivity extends AppCompatActivity {
     }
 
     public void onClickButton(View view) {
-        Intent i = null;
+        try {
+            cancelWork(view);
+        } catch (Exception e) {
+        }
+
+        if(view.getId() == R.id.prevButton) {
+            if (cur_sessionNum < 2) return;
+            cur_sessionNum-=2;
+        }
         if (cur_sessionNum == sessionNum) {
-            i = new Intent(this, CompleteActivity.class);
+            Intent i = new Intent(this, CompleteActivity.class);
             startActivity(i);
         } else {
             cur_session = list.get(cur_sessionNum);
@@ -136,13 +149,43 @@ public class CookingActivity extends AppCompatActivity {
 
             cur_sessionNum++;
 
+            ((Button) findViewById(R.id.nextButton)).setText("다음");
             ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
             progressBar.setProgress(cur_sessionNum);
-            // TODO: get remain time
-            if(sessionTime != INF) {
-                //TODO: IF has remain time, run cooking Task
+
+            Pattern pattern = Pattern.compile("[0-9]분");
+            Matcher matcher = pattern.matcher(cur_session.getRecipe_display());
+            if(matcher.find()) {
+                remain_Time = session_Time = Integer.parseInt(matcher.group().substring(0, 1));
+                ((TextView)findViewById(R.id.remainTime)).setText("0"+Integer.toString(session_Time)+":00");
+            }
+            else {
+                ((TextView)findViewById(R.id.remainTime)).setText("+1분");
+            }
+
+            if(session_Time != INF) {
+                settingTimer(view);
             }
         }
+    }
+
+    public void settingTimer(View view) {
+        try {
+            cancelWork(view);
+        } catch (Exception e) {
+        }
+        if (mBreak) {
+            mBreak = false;
+            mTask = new CookingTask();
+            mTask.setOutputView((TextView)findViewById(R.id.remainTime));
+            mTask.execute(session_Time);
+        } else {
+            mBreak = true;
+        }
+    }
+
+    public void cancelWork(View v) {
+        mTask.cancel(true);
     }
 }
