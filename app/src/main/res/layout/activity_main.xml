@@ -11,19 +11,22 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:orientation="horizontal">
 
         <EditText
-            android:layout_width="285dp"
-            android:layout_height="wrap_content" />
+            android:layout_width="161dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:hint="원하는 레시피를 입력해주세요!" />
 
         <ImageButton
             android:id="@+id/button2"
-            android:layout_width="51dp"
-            android:layout_height="50dp"
+            android:layout_width="57dp"
+            android:layout_height="match_parent"
             android:backgroundTint="@android:color/transparent"
             android:onClick="showRecipe"
+            android:scaleType="centerCrop"
             app:srcCompat="@drawable/search_recipe_button" />
 
     </LinearLayout>
@@ -32,11 +35,10 @@
         android:id="@+id/month_ingredient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text = "이달의 재료"
         android:gravity="center"
+        android:text="이달의 재료"
         android:textColor="#ff0400ff"
-        android:textSize = "30dp"/>
-
+        android:textSize="30dp" />
 
 
     <Button
