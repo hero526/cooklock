@@ -1,5 +1,7 @@
-package com.example.semin.cooklock;
+﻿package com.example.semin.cooklock;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -20,6 +22,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Scanner;
 import java.util.Timer;
@@ -27,15 +30,16 @@ import java.util.TimerTask;
 
 public class CookingActivity extends AppCompatActivity {
     String foodid;
-    int sessionNum = 0;
+    static int sessionNum = 0;
     Bitmap bitmap;
 
     int cur_sessionNum = 0;
     ArrayList<Recipe_Seq> list = new ArrayList<>();
     Recipe_Seq cur_session;
 
-    private int remainTime;
-    private int sessionTime;
+    final int INF = 999;
+    private int remainTime = INF;
+    private int sessionTime = INF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,17 +84,19 @@ public class CookingActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.sessionDisp))
                 .setText("요리를 시작합니다.");
+        ((Button) findViewById(R.id.nextButton))
+                .setText("시작");
     }
 
     public void onClickButton(View view) {
+        Intent i = null;
         if (cur_sessionNum == sessionNum) {
-            Intent i = new Intent(this, CompleteActivity.class);
+            i = new Intent(this, CompleteActivity.class);
             startActivity(i);
         } else {
             cur_session = list.get(cur_sessionNum);
 
             ImageView imageView = (ImageView) findViewById(R.id.sessionImage);
-
 
             Thread mThread = new Thread() {
                 @Override
@@ -125,6 +131,13 @@ public class CookingActivity extends AppCompatActivity {
                     .setText(cur_session.getRecipe_display());
 
             cur_sessionNum++;
+            final View view1 = view;
+            view.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    onClickButton(view1);
+                }
+            }, 3000);
         }
     }
 }
