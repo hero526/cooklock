@@ -19,8 +19,7 @@
             android:layout_width="136dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="150dp"
-            android:background="@null"
-            android:hint="원하는 레시피를 입력해주세요!" />
+            android:background="@null" />
 
         <ImageButton
             android:id="@+id/button2"
@@ -47,9 +46,9 @@
     <Button
         android:id="@+id/button4"
         android:layout_width="match_parent"
-        android:layout_height="173dp"
+        android:layout_height="38dp"
         android:onClick="checkDataInput"
-        android:text="이달의 제철 재료" />
+        android:text="이달의 제철 재료_data input check 용" />
 <!--
     <Button
         android:id="@+id/button"
@@ -63,13 +62,23 @@
     <ImageButton
         android:id="@+id/button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="129dp"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="@android:color/transparent"
         android:onClick="showIngredient"
         android:scaleType="centerInside"
         app:srcCompat="@drawable/search_ingredient_btn" />
 
+    <ImageButton
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="123dp"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@android:color/transparent"
+        android:onClick="debug_complete"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/community_btn" />
+<!--
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
@@ -77,5 +86,7 @@
         android:layout_gravity="center_horizontal"
         android:onClick="debug_complete"
         android:text="커뮤니티(미구현)" />
+
+ -->
 
 </LinearLayout>
