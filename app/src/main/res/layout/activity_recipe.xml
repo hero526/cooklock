@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   android:orientation="vertical"
+    android:background="@drawable/background_search_common"
+    android:orientation="vertical"
     android:weightSum="6"
-   tools:context=".RecipeActivity">
+    tools:context=".RecipeActivity">
 
 
     <LinearLayout
-        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
@@ -38,16 +39,16 @@
 
     <ListView
         android:id="@+id/list"
-        android:layout_weight="4"
         android:layout_width="match_parent"
-        android:layout_height="482dp" />
+        android:layout_height="482dp"
+        android:layout_weight="4" />
 
     <ProgressBar
         android:id="@+id/progressBar1"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_weight="1"
-
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
 </LinearLayout>

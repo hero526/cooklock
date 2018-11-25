@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_search_common"
     android:orientation="vertical"
     tools:context=".IngredientActivity">
+
     <AutoCompleteTextView
         android:id="@+id/ingredient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:completionThreshold="1"
-        />
+        android:completionThreshold="1" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -34,9 +35,9 @@
 
     <Button
         android:id="@+id/SelectButton"
-        android:text="선택"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="선택" />
 
 
 </LinearLayout>
