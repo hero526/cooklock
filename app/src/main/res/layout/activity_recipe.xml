@@ -19,7 +19,7 @@
 
         <EditText
             android:id="@+id/editText"
-            android:layout_width="274dp"
+            android:layout_width="281dp"
             android:layout_height="match_parent"
             android:background="@null" />
 
@@ -27,9 +27,9 @@
             android:id="@+id/imageButton"
             android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:background="@drawable/ingredient_searh_btn"
             android:backgroundTint="@android:color/transparent"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/ingredient_searh_btn"  />
 
     </LinearLayout>
 

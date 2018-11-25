@@ -16,19 +16,19 @@
         android:orientation="horizontal">
 
         <EditText
-            android:layout_width="136dp"
+            android:layout_width="123dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="150dp"
             android:background="@null" />
 
         <ImageButton
             android:id="@+id/button2"
-            android:layout_width="85dp"
-            android:layout_height="53dp"
+            android:layout_width="94dp"
+            android:layout_height="50dp"
             android:layout_gravity="bottom"
             android:backgroundTint="@android:color/transparent"
             android:onClick="showRecipe"
-            android:scaleType="centerCrop"
+            android:scaleType="centerInside"
             app:srcCompat="@drawable/find_recipe_btn" />
 
     </LinearLayout>
