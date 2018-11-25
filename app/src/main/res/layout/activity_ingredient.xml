@@ -12,10 +12,11 @@
         android:layout_height="wrap_content"
         android:completionThreshold="1"
         />
-        <ImageView
-            android:src="@drawable/search_recipe_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/find_recipe_btn" />
 
     <RadioGroup
         android:layout_width="match_parent"
