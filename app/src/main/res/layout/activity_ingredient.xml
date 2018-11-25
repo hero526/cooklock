@@ -8,16 +8,39 @@
     android:orientation="vertical"
     tools:context=".IngredientActivity">
 
-    <AutoCompleteTextView
-        android:id="@+id/ingredient"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:completionThreshold="1" />
+        android:layout_height="31dp"
+        android:layout_marginTop="49dp"
+        android:orientation="horizontal"
+        android:paddingLeft="45dp"
+        android:paddingRight="20dp">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/find_recipe_btn" />
+        <AutoCompleteTextView
+            android:id="@+id/ingredient"
+            android:layout_width="233dp"
+            android:layout_height="wrap_content"
+            android:completionThreshold="1" />
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="47dp"
+            android:layout_height="match_parent"
+
+            android:backgroundTint="@android:color/transparent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/ingredient_searh_btn" />
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="47dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="-19dp"
+            android:backgroundTint="@android:color/transparent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/ingredient_pic_search_btn" />
+
+    </LinearLayout>
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -38,6 +61,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="선택" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/find_recipe_btn" />
 
 
 </LinearLayout>
