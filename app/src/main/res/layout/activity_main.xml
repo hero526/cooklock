@@ -11,23 +11,26 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="64dp"
+        android:gravity="right"
         android:orientation="horizontal">
 
         <EditText
-            android:layout_width="161dp"
+            android:layout_width="136dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="150dp"
+            android:background="@null"
             android:hint="원하는 레시피를 입력해주세요!" />
 
         <ImageButton
             android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_width="85dp"
+            android:layout_height="53dp"
+            android:layout_gravity="bottom"
             android:backgroundTint="@android:color/transparent"
             android:onClick="showRecipe"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/search_recipe_button" />
+            app:srcCompat="@drawable/find_recipe_btn" />
 
     </LinearLayout>
 
@@ -47,7 +50,7 @@
         android:layout_height="173dp"
         android:onClick="checkDataInput"
         android:text="이달의 제철 재료" />
-
+<!--
     <Button
         android:id="@+id/button"
         android:layout_width="243dp"
@@ -55,6 +58,17 @@
         android:layout_gravity="center_horizontal"
         android:onClick="showIngredient"
         android:text="재료검색" />
+ -->
+
+    <ImageButton
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@android:color/transparent"
+        android:onClick="showIngredient"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/search_ingredient_btn" />
 
     <Button
         android:id="@+id/button3"
