@@ -12,29 +12,25 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_height="31dp"
+        android:layout_marginTop="59dp"
+        android:orientation="horizontal"
+        android:paddingStart="45dp">
 
         <EditText
             android:id="@+id/editText"
-            android:layout_width="200dp"
-            android:layout_height="match_parent" />
+            android:layout_width="274dp"
+            android:layout_height="match_parent"
+            android:background="@null" />
 
         <ImageButton
             android:id="@+id/imageButton"
-            android:layout_width="84dp"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_marginRight="30dp"
-            android:src="@mipmap/ic_launcher" />
+            android:background="@drawable/ingredient_searh_btn"
+            android:backgroundTint="@android:color/transparent"
+            android:scaleType="centerCrop" />
 
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@mipmap/ic_launcher_round" />
     </LinearLayout>
 
     <ListView
