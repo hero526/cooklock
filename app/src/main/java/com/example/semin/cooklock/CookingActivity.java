@@ -33,7 +33,6 @@ public class CookingActivity extends AppCompatActivity {
     ArrayList<Recipe_Seq> list = new ArrayList<>();
     Recipe_Seq cur_session;
 
-    final int INF = 999;
     private int remain_Time = 0;
     private int session_Time = 0;
 
@@ -41,6 +40,8 @@ public class CookingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        cur_sessionNum = 0;
+        sessionNum = 0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cooking);
 
