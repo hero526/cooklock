@@ -30,6 +30,8 @@ public class RecipeActivity extends AppCompatActivity {
     ImageButton button;
     Intent intent;
 
+    ArrayList<String> recipe; //재료들을 포함하는 음식이름
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,20 +41,36 @@ public class RecipeActivity extends AppCompatActivity {
         String check = intent.getStringExtra("check");
 
         if (check.equals("ingredient")) {
+            ArrayList<String> names = (ArrayList<String>)intent.getSerializableExtra("ingredients"); //재료들
+            ArrayList<String> recipe =  new ArrayList<String> () ; //재료들을 포함하는 음식이름 //재료들을 포함하는 음식이름
+
             Myadapter = new MyListAdapter();
             listView = (ListView) findViewById(R.id.list);
 
             listView.setAdapter(Myadapter);
-            InputStream inputStream = getResources().openRawResource(R.raw.recipe_basic);
+
+            InputStream inputStream = getResources().openRawResource(R.raw.recipe_ingrident);
 
             Scanner scanner = new Scanner(inputStream);
-
 
             scanner.nextLine();
             while (scanner.hasNextLine()) {
                 String[] data = scanner.nextLine().split(",");
                 try {
-                    Myadapter.addItem(data[0], data[1], data[2], data[4], data[7], data[8], data[10], data[13]);
+                    for(int i=0 ; i < names.size();i++) {
+                        if (data[2].contains(names.get(i))) {
+                            int flag = 0;
+                            for (int j = 0; j < recipe.size(); j++) {
+                                if ((recipe.get(j)).equals(data[0])) {
+                                    flag = 1;
+                                    break;
+                                }
+                            }
+                            if (flag == 0)
+                                recipe.add(data[0]);
+                        }
+                    }
+
                 } catch (NumberFormatException e) {
                     continue;
                 } catch (ArrayIndexOutOfBoundsException e) {
@@ -60,6 +78,29 @@ public class RecipeActivity extends AppCompatActivity {
                 }
             }
             scanner.close();
+
+          inputStream = getResources().openRawResource(R.raw.recipe_basic);
+
+           scanner = new Scanner(inputStream);
+
+
+            scanner.nextLine();
+            while (scanner.hasNextLine()) {
+                String[] data = scanner.nextLine().split(",");
+                try {
+                    for(int i=0;i<recipe.size();i++) {
+                        if (data[0].equals(recipe.get(i)))
+                            Myadapter.addItem(data[0], data[1], data[2], data[4], data[7], data[8], data[10], data[13]);
+                    }
+                } catch (NumberFormatException e) {
+                    continue;
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    continue;
+                }
+            }
+            scanner.close();
+
+
         } else if (check.equals("main")) {
             String name = intent.getStringExtra("name");
             Myadapter = new MyListAdapter();
