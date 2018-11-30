@@ -18,7 +18,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
@@ -28,7 +28,7 @@
         <AutoCompleteTextView
             android:id="@+id/ingredient"
             android:layout_width="255dp"
-            android:layout_height="40dp"
+            android:layout_height="52dp"
             android:layout_gravity="center"
             android:background="@drawable/searchbar_common"
             android:completionThreshold="1"
@@ -39,21 +39,23 @@
 
         <ImageButton
             android:id="@+id/imageButton3"
-            android:layout_width="48dp"
-            android:layout_height="29dp"
+            android:layout_width="59dp"
+            android:layout_height="match_parent"
 
             android:layout_marginLeft="-20dp"
+            android:layout_marginBottom="15dp"
             android:backgroundTint="@android:color/transparent"
             android:onClick="addIngredient"
             android:paddingBottom="13dp"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/ingredient_searh_btn" />
+            app:srcCompat="@drawable/add_btn" />
 
         <ImageButton
             android:id="@+id/imageButton4"
-            android:layout_width="48dp"
-            android:layout_height="29dp"
+            android:layout_width="59dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="-19dp"
+            android:layout_marginBottom="15dp"
             android:backgroundTint="@android:color/transparent"
             android:paddingBottom="13dp"
             android:scaleType="centerCrop"
@@ -63,7 +65,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="374dp"
+        android:layout_height="335dp"
         android:background="#86000000">
 
         <LinearLayout

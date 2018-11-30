@@ -8,51 +8,44 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="182dp"
+        android:layout_height="69dp"
+        android:paddingLeft="10dp"
+        app:srcCompat="@drawable/logo"
+        tools:layout_editor_absoluteX="152dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="horizontal"
-        android:paddingLeft="20dp">
+        android:layout_height="64dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
 
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="211dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/searchbar_main"
+            android:paddingLeft="32dp"
+            android:textColor="@android:color/background_dark" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="133dp"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            app:srcCompat="@drawable/logo"
-            tools:layout_editor_absoluteX="152dp" />
+        <ImageButton
+            android:id="@+id/button2"
+            android:layout_width="116dp"
+            android:layout_height="54dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@android:color/transparent"
+            android:onClick="showRecipe"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/find_recipe_btn" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="99dp"
-                android:layout_height="15dp"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/searchbar_main"
-                android:paddingLeft="16dp"
-                android:textColor="@android:color/background_dark" />
-
-            <ImageButton
-                android:id="@+id/button2"
-                android:layout_width="92dp"
-                android:layout_height="46dp"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="12dp"
-                android:backgroundTint="@android:color/transparent"
-                android:onClick="showRecipe"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/find_recipe_btn" />
-
-        </LinearLayout>
     </LinearLayout>
 
 

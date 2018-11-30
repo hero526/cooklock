@@ -16,7 +16,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class IngredientMonthlyInfoThread {
+public class IngredientMonthlyThread extends Activity {
 
     private boolean DEBUG = true;
     private final String TAG = "IngredientMonthlyInfo";
@@ -42,9 +42,12 @@ public class IngredientMonthlyInfoThread {
 
     int currentMonth = Calendar.getInstance().get(Calendar.MONTH)+1;
 
-    public static ArrayList ingrMonthlyList = new ArrayList<IngredientMonthly>();
 
-    public IngredientMonthlyInfoThread(){
+
+    ArrayList ingrMonthlyList = new ArrayList<IngredientMonthly>();
+
+
+    public IngredientMonthlyThread(){
 
         ingrAsyncTask = new IngrAsyncTask();
         ingrAsyncTask.execute();
@@ -91,10 +94,12 @@ public class IngredientMonthlyInfoThread {
 
                 int gCount = 1;
 
+
                 //- OpneAPI의 XML 파싱하기
                 int eventType = parser1.getEventType();
                 while (eventType != XmlPullParser.END_DOCUMENT)
                 {
+                    IngredientMonthly item = new IngredientMonthly();
                     switch (eventType) {
                         case XmlPullParser.START_DOCUMENT:
                             break;
@@ -102,16 +107,15 @@ public class IngredientMonthlyInfoThread {
                         case XmlPullParser.END_TAG:
                             if (parser1.getName().equals("item")) {
                                 szMsg = ingrdCode;
-                                IngredientMonthly item = new IngredientMonthly();
                                 item.setIgrdNo(Integer.parseInt(szMsg));
                                 ingrMonthlyList.add(item);
 
-                                Log.i(TAG, item.toString());
+                                //Log.i(TAG, item.toString());
 
                                 //szMsg += "" + gCount++ + ". [ 재료 코드 ] " + ingrdCode + "\n";
 
                                 ingrOpenURL2 = monthFdmtDtl_URL + ingrCode_REQ_CODE + ingrdCode + SERVICE_KEY;
-                                Log.i(TAG, "url2  " + ingrOpenURL2 );
+                                //Log.i(TAG, "url2  " + ingrOpenURL2 );
                                 URL url2 = new URL(ingrOpenURL2);
                                 InputStream is2 = url2.openStream();
                                 XmlPullParserFactory factory2 = XmlPullParserFactory.newInstance();
@@ -145,7 +149,7 @@ public class IngredientMonthlyInfoThread {
                                                 szMsg = toAccept;
                                                 item.setToAccept(szMsg);
 
-                                                Log.i(TAG, "inner" + item.toString());
+                                                //Log.i(TAG, "inner" + item.toString());
                                             }
                                             break;
 
@@ -234,7 +238,17 @@ public class IngredientMonthlyInfoThread {
                 e.printStackTrace();
                 Log.i(TAG, "IngredientMonthlyInfo : e = " + e.getMessage());
             }
+
+
+            for(int i =0;i<ingrMonthlyList.size(); i++)
+            {
+                IngredientMonthly temp = (IngredientMonthly) ingrMonthlyList.get(i);
+                Log.i(TAG, temp.getIgrdName()) ;
+                Log.i(TAG, temp.getToBuy() + "\n") ;
+            }
+
             return null;
+
         }
 
         protected void onPostExecute(Object o) {
