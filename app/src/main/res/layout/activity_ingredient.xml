@@ -119,6 +119,7 @@
             android:layout_marginBottom="0dp"
             android:backgroundTint="@android:color/transparent"
             android:scaleType="centerInside"
+            android:onClick="selectAll"
             app:srcCompat="@drawable/select_all_btn" />
     </RelativeLayout>
 

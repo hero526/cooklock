@@ -37,4 +37,8 @@ public class CompleteActivity extends AppCompatActivity {
     public void onClickPhoto(View view) {
         sendTakePhotoIntent();
     }
+
+    public void goCommunity(View view) {
+        // TODO: https://www.instagram.com/cooklock_official/?hl=ko 로 넘어가기
+    }
 }

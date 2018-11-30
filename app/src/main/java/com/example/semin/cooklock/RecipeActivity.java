@@ -83,7 +83,6 @@ public class RecipeActivity extends AppCompatActivity {
 
            scanner = new Scanner(inputStream);
 
-
             scanner.nextLine();
             while (scanner.hasNextLine()) {
                 String[] data = scanner.nextLine().split(",");
@@ -150,7 +149,6 @@ public class RecipeActivity extends AppCompatActivity {
             scanner.close();
         }
 
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -176,7 +174,6 @@ public class RecipeActivity extends AppCompatActivity {
                 while (scanner.hasNextLine()) {
                     String[] data = scanner.nextLine().split(",");
                     try {
-
                         if (data[1].contains(name))
                             Myadapter.addItem(data[0], data[1], data[2], data[4], data[7], data[8], data[10], data[13]);
                     } catch (NumberFormatException e) {

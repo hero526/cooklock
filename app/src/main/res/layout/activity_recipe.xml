@@ -47,7 +47,6 @@
             android:paddingBottom="13dp"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/ingredient_searh_btn" />
-
     </LinearLayout>
 
     <ListView
