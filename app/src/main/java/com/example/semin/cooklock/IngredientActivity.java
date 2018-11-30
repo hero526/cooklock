@@ -79,6 +79,7 @@ public class IngredientActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(IngredientActivity.this,RecipeActivity.class);
+                i.putExtra("check", "ingredient");
                 startActivity(i);
             }
         });
@@ -93,6 +94,7 @@ public class IngredientActivity extends AppCompatActivity {
                 LayoutParams.WRAP_CONTENT);
         layoutParams.gravity = Gravity.LEFT;
         layoutParams.setMargins(10, 10, 10, 10); // (left, top, right, bottom)
+
         checkBox.setLayoutParams(layoutParams);
         checkBox.setText(editText.getText().toString());
         checkBox.setTextColor(Color.BLACK);
