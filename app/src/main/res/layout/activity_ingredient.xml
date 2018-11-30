@@ -61,9 +61,10 @@
     </LinearLayout>
 
     <ScrollView
-        android:background="#86000000"
         android:layout_width="match_parent"
-        android:layout_height="400dp">
+        android:layout_height="374dp"
+        android:background="#86000000">
+
         <LinearLayout
             android:id="@+id/ingredientlist"
             android:layout_width="match_parent"
@@ -71,11 +72,41 @@
             android:orientation="vertical" />
     </ScrollView>
 
-    <ImageButton
-        android:paddingTop="15dp"
-        android:id="@+id/SelectButton"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/transparent"
-        app:srcCompat="@drawable/find_recipe_btn" />
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom|end"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/SelectButton"
+            android:layout_width="141dp"
+            android:layout_height="116dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="-80dp"
+            android:backgroundTint="@android:color/transparent"
+            android:paddingTop="0dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/search_recipe_through_ingredient" />
+
+        <ImageView
+            android:id="@+id/bottom_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:scaleType="fitEnd"
+            app:srcCompat="@drawable/bottom_bar" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="92dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="-50dp"
+            android:backgroundTint="@android:color/transparent"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/select_all_btn" />
+    </LinearLayout>
+
 </LinearLayout>
