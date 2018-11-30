@@ -39,9 +39,6 @@ public class RecipeActivity extends AppCompatActivity {
         InputStream inputStream = getResources().openRawResource(R.raw.recipe_basic);
 
         Scanner scanner = new Scanner(inputStream);
-
-
-
         scanner.nextLine();
         while(scanner.hasNextLine()){
             String[] data = scanner.nextLine().split(",");
@@ -94,7 +91,4 @@ public class RecipeActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
 }

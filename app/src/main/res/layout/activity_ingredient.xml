@@ -31,9 +31,8 @@
             android:layout_gravity="center"
             android:background="@drawable/searchbar_common"
             android:completionThreshold="1"
-            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
             android:paddingBottom="12dp"
-            android:textAlignment="textEnd"
             android:textColor="@android:color/background_dark"
             android:textSize="14sp" />
 
@@ -46,6 +45,7 @@
             android:backgroundTint="@android:color/transparent"
             android:paddingBottom="13dp"
             android:scaleType="centerCrop"
+            android:onClick="addIngredient"
             app:srcCompat="@drawable/ingredient_searh_btn" />
 
         <ImageButton
@@ -60,30 +60,22 @@
 
     </LinearLayout>
 
-    <RadioGroup
+    <ScrollView
+        android:background="#86000000"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RadioButton
+        android:layout_height="400dp">
+        <LinearLayout
+            android:id="@+id/ingredientlist"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </RadioGroup>
-
-
-    <Button
+    <ImageButton
+        android:paddingTop="15dp"
         android:id="@+id/SelectButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="선택" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/find_recipe_btn" />
-
-
+        android:backgroundTint="@android:color/transparent"
+        app:srcCompat="@drawable/find_recipe_btn" />
 </LinearLayout>

@@ -1,14 +1,21 @@
 package com.example.semin.cooklock;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
-
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.LinearLayout.LayoutParams;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,12 +24,15 @@ import java.util.Scanner;
 
 public class IngredientActivity extends AppCompatActivity {
     AutoCompleteTextView ingredient_text;
-    Button select_button;
+    MyListAdapter Myadapter;
+
+    ImageButton select_button;
+    ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredient);
-
 
         InputStream inputStream = getResources().openRawResource(R.raw.recipe_ingrident);
 
@@ -34,8 +44,6 @@ public class IngredientActivity extends AppCompatActivity {
             String[] data = scanner.nextLine().split(",");
             try {
                     list_ing.add(new String(data[2]));
-
-
             }catch(NumberFormatException e){
                 continue;
             }catch(ArrayIndexOutOfBoundsException e){
@@ -47,8 +55,6 @@ public class IngredientActivity extends AppCompatActivity {
 
         HashSet<String> distinctData = new HashSet<String>(list_ing);
         list_ing = new ArrayList<String>(distinctData);
-
-
 
         ingredient_text = (AutoCompleteTextView) findViewById(R.id.ingredient);
         String[] ingrident = new String[list_ing.size()];
@@ -66,8 +72,8 @@ public class IngredientActivity extends AppCompatActivity {
                         IngredientActivity.this,R.layout.support_simple_spinner_dropdown_item,ingrident
                 )
         );
-        select_button = (Button)findViewById(R.id.SelectButton);
 
+        select_button = (ImageButton)findViewById(R.id.SelectButton);
 
         select_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,5 +82,21 @@ public class IngredientActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    public void addIngredient(View view) {
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.ingredientlist);
+        EditText editText=(EditText)findViewById(R.id.ingredient);
+
+        CheckBox checkBox = new CheckBox(this);
+        LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT,
+                LayoutParams.WRAP_CONTENT);
+        layoutParams.gravity = Gravity.LEFT;
+        layoutParams.setMargins(10, 10, 10, 10); // (left, top, right, bottom)
+        checkBox.setLayoutParams(layoutParams);
+        checkBox.setText(editText.getText().toString());
+        checkBox.setTextColor(Color.BLACK);
+        checkBox.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        linearLayout.addView(checkBox);
     }
 }

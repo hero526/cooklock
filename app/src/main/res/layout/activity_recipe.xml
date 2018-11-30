@@ -32,9 +32,8 @@
             android:layout_gravity="center"
             android:background="@drawable/searchbar_common"
             android:completionThreshold="1"
-            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
             android:paddingBottom="12dp"
-            android:textAlignment="textEnd"
             android:textColor="@android:color/background_dark"
             android:textSize="14sp" />
 
