@@ -83,8 +83,10 @@ public class IngredientActivity extends AppCompatActivity {
                 i.putExtra("check", "ingredient");
                 ArrayList<String> ingList = new ArrayList<String>();
 
-                ingList.add("두부");
-                ingList.add("가지");
+                CheckBox checkBox;
+                for(int id = 1;(checkBox = ((CheckBox)findViewById(id)))!=null;id++){
+                    if(checkBox.isChecked()) ingList.add(checkBox.getText().toString());
+                }
 
                 i.putExtra("ingredients", ingList);
 
