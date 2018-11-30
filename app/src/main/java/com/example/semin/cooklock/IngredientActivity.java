@@ -125,4 +125,11 @@ public class IngredientActivity extends AppCompatActivity {
         checkBox.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
         linearLayout.addView(checkBox);
     }
+
+    public void selectAll(View view) {
+        CheckBox checkBox;
+        for(int id = 1;(checkBox = ((CheckBox)findViewById(id)))!=null;id++){
+            if(!checkBox.isChecked()) checkBox.setChecked(true);
+        }
+    }
 }
