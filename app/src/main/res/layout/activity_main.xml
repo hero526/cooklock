@@ -5,14 +5,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@android:color/background_light"
     android:orientation="vertical"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        app:srcCompat="@drawable/logo"
+        tools:layout_editor_absoluteX="152dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:gravity="right"
         android:orientation="horizontal">
 
         <EditText
@@ -49,7 +56,7 @@
         android:layout_height="38dp"
         android:onClick="checkDataInput"
         android:text="이달의 제철 재료_data input check 용" />
-<!--
+    <!--
     <Button
         android:id="@+id/button"
         android:layout_width="243dp"
@@ -78,7 +85,7 @@
         android:onClick="debug_complete"
         android:scaleType="centerInside"
         app:srcCompat="@drawable/community_btn" />
-<!--
+    <!--
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"

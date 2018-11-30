@@ -4,32 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_search_common"
+    android:background="@android:color/background_light"
     android:orientation="vertical"
     android:weightSum="6"
     tools:context=".RecipeActivity">
 
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        app:srcCompat="@drawable/logo"
+        tools:layout_editor_absoluteX="152dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="31dp"
-        android:layout_marginTop="59dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        android:paddingStart="45dp">
+        android:paddingLeft="45dp"
+        android:paddingRight="20dp">
 
         <EditText
             android:id="@+id/editText"
-            android:layout_width="281dp"
-            android:layout_height="match_parent"
-            android:background="@null" />
+            android:layout_width="255dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@drawable/searchbar_common"
+            android:completionThreshold="1"
+            android:paddingRight="15dp"
+            android:paddingBottom="12dp"
+            android:textAlignment="textEnd"
+            android:textColor="@android:color/background_dark"
+            android:textSize="14sp" />
 
         <ImageButton
             android:id="@+id/imageButton"
-            android:layout_width="51dp"
-            android:layout_height="match_parent"
+            android:layout_width="48dp"
+            android:layout_height="29dp"
+            android:layout_marginLeft="-20dp"
             android:backgroundTint="@android:color/transparent"
+            android:paddingBottom="13dp"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/ingredient_searh_btn"  />
+            app:srcCompat="@drawable/ingredient_searh_btn" />
 
     </LinearLayout>
 
