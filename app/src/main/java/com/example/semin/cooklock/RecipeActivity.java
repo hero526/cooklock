@@ -28,7 +28,7 @@ public class RecipeActivity extends AppCompatActivity {
     MyListAdapter Myadapter;
     EditText editText;
     ImageButton button;
-    Intent intent ;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +38,29 @@ public class RecipeActivity extends AppCompatActivity {
         intent = getIntent();
         String check = intent.getStringExtra("check");
 
-        if(check.equals("ingredient")) {
+        if (check.equals("ingredient")) {
+            Myadapter = new MyListAdapter();
+            listView = (ListView) findViewById(R.id.list);
 
-        }
-        else if(check.equals("main")) {
+            listView.setAdapter(Myadapter);
+            InputStream inputStream = getResources().openRawResource(R.raw.recipe_basic);
+
+            Scanner scanner = new Scanner(inputStream);
+
+
+            scanner.nextLine();
+            while (scanner.hasNextLine()) {
+                String[] data = scanner.nextLine().split(",");
+                try {
+                    Myadapter.addItem(data[0], data[1], data[2], data[4], data[7], data[8], data[10], data[13]);
+                } catch (NumberFormatException e) {
+                    continue;
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    continue;
+                }
+            }
+            scanner.close();
+        } else if (check.equals("main")) {
             String name = intent.getStringExtra("name");
             Myadapter = new MyListAdapter();
             listView = (ListView) findViewById(R.id.list);
@@ -66,8 +85,7 @@ public class RecipeActivity extends AppCompatActivity {
             }
             scanner.close();
 
-        }
-         else {
+        } else {
             Myadapter = new MyListAdapter();
             listView = (ListView) findViewById(R.id.list);
 

@@ -80,6 +80,13 @@ public class IngredientActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(IngredientActivity.this,RecipeActivity.class);
                 i.putExtra("check", "ingredient");
+                ArrayList<String> ingList = new ArrayList<String>();
+
+                ingList.add("두부");
+                ingList.add("가지");
+
+                i.putExtra("ingredients", ingList);
+
                 startActivity(i);
             }
         });
