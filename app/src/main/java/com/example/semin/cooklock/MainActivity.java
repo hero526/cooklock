@@ -7,6 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,10 +19,14 @@ public class MainActivity extends AppCompatActivity {
     TextView textView;
     int a = 1;
     Animation anim;
+    EditText editText;
+    ImageButton button2 ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        editText = (EditText)findViewById(R.id.editText);
+        button2 = (ImageButton)findViewById(R.id.button2);
         textView = (TextView)findViewById(R.id.month_ingredient);
         anim = AnimationUtils.loadAnimation(this,R.anim.set);
         //textView.startAnimation(anim);
@@ -38,6 +45,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         textView.startAnimation(anim);
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String str=editText.getText().toString();
+                Intent intent = new Intent(getApplicationContext(),RecipeActivity.class);
+                intent.putExtra("name",str);
+                startActivity(intent);
+            }
+        }); // 메인에서 단어치면 해당 단어를 포함하는 레시피 검색결과가 나온다
     }
 
     public void showIngredient(View view) {
