@@ -1,14 +1,9 @@
 package com.example.semin.cooklock;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,18 +11,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,6 +26,8 @@ public class CookingActivity extends AppCompatActivity {
     String foodid;
     static int sessionNum = 0;
     Bitmap bitmap;
+
+    CountDownTimer cTimer = null;
 
     int cur_sessionNum = 0;
     ArrayList<Recipe_Seq> list = new ArrayList<>();
@@ -44,7 +37,6 @@ public class CookingActivity extends AppCompatActivity {
     private int remain_Time = 0;
     private int session_Time = 0;
 
-    CookingTask mTask;
     boolean mBreak = true;
 
     @Override
@@ -59,8 +51,6 @@ public class CookingActivity extends AppCompatActivity {
         Intent i = getIntent();
 
         foodid = i.getExtras().getString("foodid");
-        //foodid = "195453";
-
         scanner.nextLine();
         while (scanner.hasNextLine()) {
             String[] data = scanner.nextLine().split("\t");
@@ -98,11 +88,8 @@ public class CookingActivity extends AppCompatActivity {
     }
 
     public void onClickButton(View view) {
-        try {
-            cancelWork(view);
-        } catch (Exception e) {
-        }
-
+        cancelTimer();
+        remain_Time = session_Time = 0;
         if(view.getId() == R.id.prevButton) {
             if (cur_sessionNum < 2) return;
             cur_sessionNum-=2;
@@ -157,49 +144,42 @@ public class CookingActivity extends AppCompatActivity {
             Pattern pattern = Pattern.compile("[0-9]분");
             Matcher matcher = pattern.matcher(cur_session.getRecipe_display());
             if(matcher.find()) {
-                remain_Time = session_Time = Integer.parseInt(matcher.group().substring(0, 1));
-                ((TextView)findViewById(R.id.remainTime)).setText("0"+Integer.toString(session_Time)+":00");
+                remain_Time = session_Time = Integer.parseInt(matcher.group().substring(0, 1)) * 60;
+                ((TextView)findViewById(R.id.remainTime)).setText("0"+Integer.toString(session_Time/60)+":00");
             }
             else {
                 ((TextView)findViewById(R.id.remainTime)).setText("+1분");
             }
 
             if(session_Time != 0) {
-                settingTimer(view);
+                startTimer();
             }
         }
     }
 
     public void settingTimer(View view) {
-        if(view.getId() == R.id.remainTime) {
-            if(session_Time == 0) {
-                try {
-                    cancelWork(view);
-                } catch (Exception e) {
-                }
-                session_Time = 1;
-            }
-            else return;
-        }
-        else {
-            try {
-                cancelWork(view);
-            } catch (Exception e) {
-            }
-        }
-
-        if (mBreak) {
-            mBreak = false;
-            mTask = new CookingTask();
-            mTask.setOutputView((TextView)findViewById(R.id.remainTime));
-            mTask.execute(session_Time);
-        } else {
-            mBreak = true;
-        }
+        cancelTimer();
+        remain_Time += 60;
+        startTimer();
     }
 
-    public void cancelWork(View v) {
-        mTask.cancel(true);
-        session_Time = 0;
+    void startTimer() {
+        cTimer = new CountDownTimer(remain_Time*1000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                int min = remain_Time / 60;
+                int sec = remain_Time % 60;
+                ((TextView)findViewById(R.id.remainTime)).setText(String.format("%02d", min) + ":" + String.format("%02d", sec));
+                remain_Time--;
+            }
+            public void onFinish() {
+                ((TextView)findViewById(R.id.remainTime)).setText("다음으로 진행하세요!");
+            }
+        };
+        cTimer.start();
+    }
+
+    void cancelTimer() {
+        if(cTimer!=null)
+            cTimer.cancel();
     }
 }
