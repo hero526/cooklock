@@ -69,11 +69,10 @@
             app:srcCompat="@drawable/cook_with_speaker" />
 
         <RelativeLayout
-
             android:id="@+id/a_bus_info_lay"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_margin="10dp">
+            android:layout_margin="0dp">
 
             <ImageView
                 android:id="@+id/background_img"
@@ -103,8 +102,6 @@
                 android:text="이달의 재료"
                 android:textColor="#ff0400ff"
                 android:textSize="30dp" />
-
-
         </RelativeLayout>
 
 
