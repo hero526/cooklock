@@ -28,7 +28,7 @@ public class RecipeActivity extends AppCompatActivity {
     MyListAdapter Myadapter;
     EditText editText;
     ImageButton button;
-    Intent intent = null;
+    Intent intent ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +36,12 @@ public class RecipeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recipe);
 
         intent = getIntent();
+        String check = intent.getStringExtra("check");
 
-        if (intent != null) {
+        if(check.equals("ingredient")) {
+
+        }
+        else if(check.equals("main")) {
             String name = intent.getStringExtra("name");
             Myadapter = new MyListAdapter();
             listView = (ListView) findViewById(R.id.list);
@@ -61,7 +65,9 @@ public class RecipeActivity extends AppCompatActivity {
                 }
             }
             scanner.close();
-        } else {
+
+        }
+         else {
             Myadapter = new MyListAdapter();
             listView = (ListView) findViewById(R.id.list);
 

@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String str=editText.getText().toString();
                 Intent intent = new Intent(getApplicationContext(),RecipeActivity.class);
+                intent.putExtra("check","main");
                 intent.putExtra("name",str);
                 startActivity(intent);
             }
