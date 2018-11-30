@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     Animation anim;
     EditText editText;
     ImageButton button2 ;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,10 +74,13 @@ public class MainActivity extends AppCompatActivity {
        // Intent i = new Intent(this, CookingActivity.class);
        // startActivity(i);
     }
+
+    /*
     public void checkDataInput(View view) {
         Intent i = new Intent(this, IngredientMonthlyInfo.class);
         startActivity(i);
     }
+    */
 
     public void goCommunity(View view) {
         // TODO: https://www.instagram.com/cooklock_official/?hl=ko 로 넘어가기

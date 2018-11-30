@@ -100,12 +100,6 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:onClick="checkDataInput"
-        android:text="이달의 제철 재료_data input check 용" />
     <!--
     <Button
         android:id="@+id/button"

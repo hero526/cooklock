@@ -4,26 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/background_light"
     android:orientation="vertical"
     tools:context=".CompleteActivity">
 
 
     <ImageView
         android:id="@+id/photo"
-        android:scaleType="fitCenter"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
         android:layout_gravity="center"
+        android:layout_weight="2"
         android:onClick="onClickPhoto"
+        android:scaleType="fitCenter"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="1"
         android:layout_gravity="center"
+        android:layout_weight="1"
         android:text="완성!" />
 
     <Button
@@ -31,5 +32,5 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:onClick="goCommunity"
-        android:text="커뮤니티에 올리기"/>
+        android:text="커뮤니티에 올리기" />
 </LinearLayout>

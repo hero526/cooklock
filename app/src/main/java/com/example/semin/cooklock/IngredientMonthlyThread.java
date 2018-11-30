@@ -253,6 +253,7 @@ public class IngredientMonthlyThread extends Activity {
 
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
+
                 //InfoTXT.setText(ingrMonthlyList.get(1));
                // InfoTXT.setText(ingrMonthlyList.indexOf(1));
                 //InfoTXT.setText(ingrMonthlyList.indexOf(2));//지금은 로딩중 상태인데
