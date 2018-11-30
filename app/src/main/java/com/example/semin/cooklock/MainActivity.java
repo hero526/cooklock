@@ -77,4 +77,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void goCommunity(View view) {
+        // TODO: https://www.instagram.com/cooklock_official/?hl=ko 로 넘어가기
+    }
 }

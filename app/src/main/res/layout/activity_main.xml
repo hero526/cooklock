@@ -139,7 +139,7 @@
         android:layout_height="123dp"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="@android:color/transparent"
-        android:onClick="debug_complete"
+        android:onClick="goCommunity"
         android:scaleType="centerInside"
         app:srcCompat="@drawable/community_btn" />
     <!--

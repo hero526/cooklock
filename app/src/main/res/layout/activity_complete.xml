@@ -30,5 +30,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:onClick="goCommunity"
         android:text="커뮤니티에 올리기"/>
 </LinearLayout>
