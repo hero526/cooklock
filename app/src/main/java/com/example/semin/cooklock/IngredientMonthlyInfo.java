@@ -18,7 +18,7 @@ import java.util.Calendar;
 
 import static java.lang.Thread.sleep;
 
-public class IngredientMonthlyInfo extends Activity {
+public class IngredientMonthlyInfo /*extends Activity*/ {
 
     private boolean DEBUG = true;
     private final String TAG = "IngredientMonthlyInfo";
@@ -46,24 +46,24 @@ public class IngredientMonthlyInfo extends Activity {
 
 
 
-    ArrayList ingrMonthlyList = new ArrayList<IngredientMonthly>();
+    ArrayList<IngredientMonthly> ingrMonthlyList = new ArrayList<IngredientMonthly>();
 
 
-    @Override
+   /* @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //- Activiy 사용 화면 설정
-        setContentView(R.layout.ingredient_info);
+        setContentView(R.layout.ingredient_info);*/
 
         //- UI 초기화 작업 수행
-        initUI();
-        if(DEBUG) Log.i(TAG, "onCreate() OK"); //debug 값을 false 로 만들면 나오지 않게 된다.
+       // initUI();
+       // if(DEBUG) Log.i(TAG, "onCreate() OK"); //debug 값을 false 로 만들면 나오지 않게 된다.
 
-    }
+    /*}*/
 
-    private void initUI() {
+    public void initUI() {
         //- XML에 존재하는 UI 객체 가져오기
-        InfoTXT = findViewById(R.id.ingredientTxt);
+       // InfoTXT = findViewById(R.id.ingredientTxt);
         ingrAsyncTask = new IngrAsyncTask();
         ingrAsyncTask.execute();
         ingrOpenURL1 = monthFdmtLst_URL + month_REQ_CODE + currentMonth + SERVICE_KEY;
@@ -260,7 +260,8 @@ public class IngredientMonthlyInfo extends Activity {
                 //InfoTXT.setText(ingrMonthlyList.get(1));
                // InfoTXT.setText(ingrMonthlyList.indexOf(1));
                 //InfoTXT.setText(ingrMonthlyList.indexOf(2));//지금은 로딩중 상태인데
-
+            MainActivity.textView.setText(ingrMonthlyList.get(0).getIgrdName() + " " + ingrMonthlyList.get(1).getIgrdName() + " " +  ingrMonthlyList.get(2).getIgrdName());
+            MainActivity.textView.startAnimation(MainActivity.anim);
         }
     }
 }
