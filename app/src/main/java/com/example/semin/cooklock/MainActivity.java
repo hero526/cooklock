@@ -16,9 +16,9 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
-    TextView textView;
+    public static TextView textView;
+    public static Animation anim;
     int a = 1;
-    Animation anim;
     EditText editText;
     ImageButton button2 ;
 
@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         editText = (EditText)findViewById(R.id.editText);
         button2 = (ImageButton)findViewById(R.id.button2);
         textView = (TextView)findViewById(R.id.month_ingredient);
+        IngredientMonthlyInfo Ingredient = new IngredientMonthlyInfo();
+        Ingredient.initUI();
         anim = AnimationUtils.loadAnimation(this,R.anim.set);
         //textView.startAnimation(anim);
         anim.setAnimationListener(new Animation.AnimationListener() {
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 //repeat
             }
         });
-        textView.startAnimation(anim);
+
 
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
