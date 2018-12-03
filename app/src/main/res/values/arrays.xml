@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ingregroup">
+        <item>품종 특성 구입 요령</item>
+        <item>보관법 및 손질법</item>
+        <item>섭취 방법</item>
+    </string-array>
+
+</resources>

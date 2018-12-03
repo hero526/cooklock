@@ -43,10 +43,10 @@ public class IngredientMonthlyInfo /*extends Activity*/ {
     private String szMsg = ""; //parsing 된 data 저장
 
     int currentMonth = Calendar.getInstance().get(Calendar.MONTH)+1;
+    String str="";
 
 
-
-    ArrayList<IngredientMonthly> ingrMonthlyList = new ArrayList<IngredientMonthly>();
+     ArrayList<IngredientMonthly> ingrMonthlyList = new ArrayList<IngredientMonthly>();
 
 
    /* @Override
@@ -271,8 +271,19 @@ public class IngredientMonthlyInfo /*extends Activity*/ {
                 //InfoTXT.setText(ingrMonthlyList.get(1));
                // InfoTXT.setText(ingrMonthlyList.indexOf(1));
                 //InfoTXT.setText(ingrMonthlyList.indexOf(2));//지금은 로딩중 상태인데
-            MainActivity.textView.setText(ingrMonthlyList.get(0).getIgrdName() + " " + ingrMonthlyList.get(1).getIgrdName() + " " +  ingrMonthlyList.get(2).getIgrdName());
+
+            //MainActivity.textView.setText(ingrMonthlyList.get(0).getIgrdName() + " " + ingrMonthlyList.get(1).getIgrdName() + " " +  ingrMonthlyList.get(2).getIgrdName());
+            for(int i =0 ; i<ingrMonthlyList.size();i++)
+            {
+                str += ingrMonthlyList.get(i).getIgrdName()+" ";
+            }
+
+            MainActivity.textView.setText(str);
             MainActivity.textView.startAnimation(MainActivity.anim);
+            for(int i =0;i<ingrMonthlyList.size(); i++) {
+                MainActivity.inlist = ingrMonthlyList;
+            }
+
         }
     }
 }

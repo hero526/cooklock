@@ -15,13 +15,15 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     public static TextView textView;
     public static Animation anim;
     int a = 1;
     EditText editText;
     ImageButton button2 ;
-
+    static ArrayList<IngredientMonthly> inlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAnimationRepeat(Animation animation) {
                 //repeat
+            }
+        });
+
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Info.class);
+                //intent.putExtra("info",inlist)
+                startActivity(intent);
             }
         });
 
