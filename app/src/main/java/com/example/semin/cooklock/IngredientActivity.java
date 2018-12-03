@@ -34,12 +34,14 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.LinearLayout.LayoutParams;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
+
 import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -84,7 +86,6 @@ import java.util.List;
 import java.util.Locale;
 
 
-
 public class IngredientActivity extends AppCompatActivity {
     private static final String CLOUD_VISION_API_KEY = "AIzaSyA1VjDZUUDJcbheHIZ0nrdJNy9N2p5vlXY";
     public static final String FILE_NAME = "temp.jpg";
@@ -118,7 +119,7 @@ public class IngredientActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredient);
-        mCameraButton = (ImageButton)findViewById(R.id.imageButton4);
+        mCameraButton = (ImageButton) findViewById(R.id.imageButton4);
         mCameraButton.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(IngredientActivity.this);
             builder
@@ -127,7 +128,7 @@ public class IngredientActivity extends AppCompatActivity {
                     .setNegativeButton("카메라", (dialog, which) -> startCamera());
             builder.create().show();
         });
-        mImageDetails = (TextView)findViewById(R.id.search_text);
+        mImageDetails = (TextView) findViewById(R.id.search_text);
 
         InputStream inputStream = getResources().openRawResource(R.raw.recipe_ingrident);
 
@@ -135,13 +136,13 @@ public class IngredientActivity extends AppCompatActivity {
         ArrayList<String> list_ing = new ArrayList<>();
 
         scanner.nextLine();
-        while(scanner.hasNextLine()){
+        while (scanner.hasNextLine()) {
             String[] data = scanner.nextLine().split(",");
             try {
-                    list_ing.add(new String(data[2]));
-            }catch(NumberFormatException e){
+                list_ing.add(new String(data[2]));
+            } catch (NumberFormatException e) {
                 continue;
-            }catch(ArrayIndexOutOfBoundsException e){
+            } catch (ArrayIndexOutOfBoundsException e) {
                 continue;
             }
         }
@@ -155,29 +156,29 @@ public class IngredientActivity extends AppCompatActivity {
         ingrident = new String[list_ing.size()];
         ingrident = list_ing.toArray(ingrident);
 
-        for(int i = 0; i<ingrident.length;i++){
-            ingrident[i] = ingrident[i].replaceAll("\"","");
+        for (int i = 0; i < ingrident.length; i++) {
+            ingrident[i] = ingrident[i].replaceAll("\"", "");
         }
 
 
         ingredient_text.setAdapter(
                 new ArrayAdapter<String>(
-                        IngredientActivity.this,R.layout.support_simple_spinner_dropdown_item,ingrident
+                        IngredientActivity.this, R.layout.support_simple_spinner_dropdown_item, ingrident
                 )
         );
 
-        select_button = (ImageButton)findViewById(R.id.SelectButton);
+        select_button = (ImageButton) findViewById(R.id.SelectButton);
 
         select_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(IngredientActivity.this,RecipeActivity.class);
+                Intent i = new Intent(IngredientActivity.this, RecipeActivity.class);
                 i.putExtra("check", "ingredient");
                 ArrayList<String> ingList = new ArrayList<String>();
 
                 CheckBox checkBox;
-                for(int id = 1;(checkBox = ((CheckBox)findViewById(id)))!=null;id++){
-                    if(checkBox.isChecked()) ingList.add(checkBox.getText().toString());
+                for (int id = 1; (checkBox = ((CheckBox) findViewById(id))) != null; id++) {
+                    if (checkBox.isChecked()) ingList.add(checkBox.getText().toString());
                 }
 
                 i.putExtra("ingredients", ingList);
@@ -186,10 +187,11 @@ public class IngredientActivity extends AppCompatActivity {
             }
         });
     }
+
     private static final AtomicInteger sNextGeneratedId = new AtomicInteger(1);
 
     public static int generateViewId() {
-        for (;;) {
+        for (; ; ) {
             final int result = sNextGeneratedId.get();
             // aapt-generated IDs have the high byte nonzero; clamp to the range under that.
             int newValue = result + 1;
@@ -199,6 +201,7 @@ public class IngredientActivity extends AppCompatActivity {
             }
         }
     }
+
     public void startGalleryChooser() {
         if (PermissionUtils.requestPermission(this, GALLERY_PERMISSIONS_REQUEST, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             Intent intent = new Intent();
@@ -208,6 +211,7 @@ public class IngredientActivity extends AppCompatActivity {
                     GALLERY_IMAGE_REQUEST);
         }
     }
+
     public void startCamera() {
         if (PermissionUtils.requestPermission(
                 IngredientActivity.this,
@@ -226,6 +230,7 @@ public class IngredientActivity extends AppCompatActivity {
         File dir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         return new File(dir, FILE_NAME);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -267,7 +272,7 @@ public class IngredientActivity extends AppCompatActivity {
 
                 callCloudVision(bitmap);
 
-               // mMainImage.setImageBitmap(bitmap);
+                // mMainImage.setImageBitmap(bitmap);
 
             } catch (IOException e) {
                 Log.d(TAG, "Image picking failed because " + e.getMessage());
@@ -350,9 +355,9 @@ public class IngredientActivity extends AppCompatActivity {
             mActivityWeakReference = new WeakReference<>(activity);
             mRequest = annotate;
         }
+
         ProgressDialog asyncDialog = new ProgressDialog(
                 IngredientActivity.this);
-
 
 
         @Override
@@ -364,6 +369,7 @@ public class IngredientActivity extends AppCompatActivity {
             asyncDialog.show();
             super.onPreExecute();
         }
+
         @Override
         protected String doInBackground(Object... params) {
             try {
@@ -390,6 +396,7 @@ public class IngredientActivity extends AppCompatActivity {
             }
         }
     }
+
     private void callCloudVision(final Bitmap bitmap) {
         // Switch text to loading
         mImageDetails.setText("로딩중...");
@@ -437,10 +444,9 @@ public class IngredientActivity extends AppCompatActivity {
                 result_list.add(translate.getresultString());
 
             }
-            for(int i = 0; i<result_list.size(); i++){
-                for(int j = 0; j<ingrident.length;j++){
-                    if(result_list.get(i).equals(ingrident[j]) == true)
-                    {
+            for (int i = 0; i < result_list.size(); i++) {
+                for (int j = 0; j < ingrident.length; j++) {
+                    if (result_list.get(i).equals(ingrident[j]) == true) {
                         display_list.add(result_list.get(i));
                         break;
                     }
@@ -452,15 +458,16 @@ public class IngredientActivity extends AppCompatActivity {
         }
         return message.toString();
     }
+
     public void show() {
-        if(display_list.size() == 0){
+        if (display_list.size() == 0) {
             Toast.makeText(getApplicationContext(),
                     "검색된 재료가 없습니다. 다른사진을 찍어주시거나 올려주시기 바랍니다.", Toast.LENGTH_LONG)
                     .show();
             return;
         }
-        final CharSequence[] items =  display_list.toArray(new String[display_list.size()]);
-        final List SelectedItems  = new ArrayList();
+        final CharSequence[] items = display_list.toArray(new String[display_list.size()]);
+        final List SelectedItems = new ArrayList();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(IngredientActivity.this);
         builder.setTitle("재료 목록");
@@ -481,15 +488,11 @@ public class IngredientActivity extends AppCompatActivity {
         builder.setPositiveButton("Ok",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        String msg="";
                         for (int i = 0; i < SelectedItems.size(); i++) {
-                            int index = (int) SelectedItems.get(i);
-
-                            msg=msg+"\n"+(i+1)+" : " +display_list.get(index);
+                            int idx = (int)SelectedItems.get(i);
+                            String str = display_list.get(idx);
+                            addIngredientWithImg(str);
                         }
-                        Toast.makeText(getApplicationContext(),
-                                "Total "+ SelectedItems.size() +" Items Selected.\n"+ msg , Toast.LENGTH_LONG)
-                                .show();
                     }
                 });
         builder.setNegativeButton("Cancel",
@@ -501,12 +504,12 @@ public class IngredientActivity extends AppCompatActivity {
         builder.show();
 
 
-
     }
 
     public void addIngredient(View view) {
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.ingredientlist);
-        EditText editText=(EditText)findViewById(R.id.ingredient);
+        EditText editText = (EditText) findViewById(R.id.ingredient);
+        String str = editText.getText().toString();
 
         CheckBox checkBox = new CheckBox(this);
         LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT,
@@ -515,7 +518,23 @@ public class IngredientActivity extends AppCompatActivity {
         layoutParams.setMargins(10, 10, 10, 10); // (left, top, right, bottom)
 
         checkBox.setLayoutParams(layoutParams);
-        checkBox.setText(editText.getText().toString());
+        checkBox.setText(str);
+        checkBox.setTextColor(Color.BLACK);
+        checkBox.setId(View.generateViewId());
+        checkBox.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        linearLayout.addView(checkBox);
+    }
+
+    public void addIngredientWithImg(String str) {
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.ingredientlist);
+        CheckBox checkBox = new CheckBox(this);
+        LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT,
+                LayoutParams.WRAP_CONTENT);
+        layoutParams.gravity = Gravity.LEFT;
+        layoutParams.setMargins(10, 10, 10, 10); // (left, top, right, bottom)
+
+        checkBox.setLayoutParams(layoutParams);
+        checkBox.setText(str);
         checkBox.setTextColor(Color.BLACK);
         checkBox.setId(View.generateViewId());
         checkBox.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
@@ -524,8 +543,8 @@ public class IngredientActivity extends AppCompatActivity {
 
     public void selectAll(View view) {
         CheckBox checkBox;
-        for(int id = 1;(checkBox = ((CheckBox)findViewById(id)))!=null;id++){
-            if(!checkBox.isChecked()) checkBox.setChecked(true);
+        for (int id = 1; (checkBox = ((CheckBox) findViewById(id))) != null; id++) {
+            if (!checkBox.isChecked()) checkBox.setChecked(true);
         }
     }
 }
