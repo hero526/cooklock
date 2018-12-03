@@ -2,6 +2,7 @@ package com.example.semin.cooklock;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,6 +40,7 @@ public class CompleteActivity extends AppCompatActivity {
     }
 
     public void goCommunity(View view) {
-        // TODO: https://www.instagram.com/cooklock_official/?hl=ko 로 넘어가기
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/cooklock_official/?hl=ko"));
+        startActivity(intent);
     }
 }

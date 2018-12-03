@@ -173,7 +173,7 @@ public class CookingActivity extends AppCompatActivity {
                 remain_Time--;
             }
             public void onFinish() {
-                ((TextView)findViewById(R.id.remainTime)).setText("다음으로 진행하세요!");
+                ((TextView)findViewById(R.id.remainTime)).setText("완료!");
             }
         };
         cTimer.start();

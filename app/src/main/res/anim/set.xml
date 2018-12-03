@@ -2,21 +2,21 @@
     <translate
         android:fromYDelta="100%"
         android:toYDelta="0%"
-        android:duration="3000"
+        android:duration="4000"
         android:repeatCount="infinite"
         android:repeatMode="restart"
         />
     <alpha
         android:fromAlpha="0"
         android:toAlpha="1"
-        android:duration="3000"
+        android:duration="4000"
         android:repeatCount="infinite"
         android:repeatMode="restart"
         />
     <alpha
         android:fromAlpha="1"
         android:toAlpha="0"
-        android:duration="3000"
+        android:duration="4000"
         android:repeatCount="infinite"
         android:repeatMode="restart"
         />
