@@ -1,9 +1,11 @@
 package com.example.semin.cooklock;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.CountDownTimer;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,7 +30,7 @@ public class CookingActivity extends AppCompatActivity {
     Bitmap bitmap;
 
     CountDownTimer cTimer = null;
-
+    Vibrator vibrator = null;
     int cur_sessionNum = 0;
     ArrayList<Recipe_Seq> list = new ArrayList<>();
     Recipe_Seq cur_session;
@@ -44,6 +46,7 @@ public class CookingActivity extends AppCompatActivity {
         sessionNum = 0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cooking);
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         InputStream inputStream = getResources().openRawResource(R.raw.recipe_sequence);
 
@@ -174,6 +177,7 @@ public class CookingActivity extends AppCompatActivity {
             }
             public void onFinish() {
                 ((TextView)findViewById(R.id.remainTime)).setText("완료!");
+                vibrator.vibrate(1000);
             }
         };
         cTimer.start();

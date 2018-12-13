@@ -128,7 +128,7 @@ public class IngredientActivity extends AppCompatActivity {
                     .setNegativeButton("카메라", (dialog, which) -> startCamera());
             builder.create().show();
         });
-        mImageDetails = (TextView) findViewById(R.id.search_text);
+        //mImageDetails = (TextView) findViewById(R.id.search_text);
 
         InputStream inputStream = getResources().openRawResource(R.raw.recipe_ingrident);
 
@@ -390,8 +390,8 @@ public class IngredientActivity extends AppCompatActivity {
             asyncDialog.dismiss();
             IngredientActivity activity = mActivityWeakReference.get();
             if (activity != null && !activity.isFinishing()) {
-                TextView imageDetail = activity.findViewById(R.id.search_text);
-                imageDetail.setText(result);
+                //TextView imageDetail = activity.findViewById(R.id.search_text);
+                //imageDetail.setText(result);
                 show();
             }
         }
@@ -399,7 +399,7 @@ public class IngredientActivity extends AppCompatActivity {
 
     private void callCloudVision(final Bitmap bitmap) {
         // Switch text to loading
-        mImageDetails.setText("로딩중...");
+        //mImageDetails.setText("로딩중...");
 
         // Do the real work in an async task, because we need to use the network anyway
         try {
