@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class Info extends AppCompatActivity {
 
- Bitmap[] bitmap;
+    Bitmap[] bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,24 +28,23 @@ public class Info extends AppCompatActivity {
         setContentView(R.layout.activity_info);
         ImageButton[] barray = new ImageButton[6];
         bitmap = new Bitmap[6];
-        barray[0] = (ImageButton)findViewById(R.id.image1);
-        barray[1] = (ImageButton)findViewById(R.id.image2);
-        barray[2] = (ImageButton)findViewById(R.id.image3);
-        barray[3] = (ImageButton)findViewById(R.id.image4);
-        barray[4] = (ImageButton)findViewById(R.id.image5);
-        barray[5] = (ImageButton)findViewById(R.id.image6);
+        barray[0] = (ImageButton) findViewById(R.id.image1);
+        barray[1] = (ImageButton) findViewById(R.id.image2);
+        barray[2] = (ImageButton) findViewById(R.id.image3);
+        barray[3] = (ImageButton) findViewById(R.id.image4);
+        barray[4] = (ImageButton) findViewById(R.id.image5);
+        barray[5] = (ImageButton) findViewById(R.id.image6);
 
         TextView[] text = new TextView[6];
 
-        text[0] = (TextView)findViewById(R.id.text1);
-        text[1] = (TextView)findViewById(R.id.text2);
-        text[2] = (TextView)findViewById(R.id.text3);
-        text[3] = (TextView)findViewById(R.id.text4);
-        text[4] = (TextView)findViewById(R.id.text5);
-        text[5] = (TextView)findViewById(R.id.text6);
+        text[0] = (TextView) findViewById(R.id.text1);
+        text[1] = (TextView) findViewById(R.id.text2);
+        text[2] = (TextView) findViewById(R.id.text3);
+        text[3] = (TextView) findViewById(R.id.text4);
+        text[4] = (TextView) findViewById(R.id.text5);
+        text[5] = (TextView) findViewById(R.id.text6);
 
-        for(int i = 0 ;i<MainActivity.inlist.size();i++)
-        {
+        for (int i = 0; i < MainActivity.inlist.size(); i++) {
             text[i].setText(MainActivity.inlist.get(i).getIgrdName());
         }
 
@@ -53,7 +52,7 @@ public class Info extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    for(int i =0; i<MainActivity.inlist.size();i++) {
+                    for (int i = 0; i < MainActivity.inlist.size(); i++) {
                         URL url = new URL(MainActivity.inlist.get(i).getImgSrc());
 
                         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -74,33 +73,28 @@ public class Info extends AppCompatActivity {
         mThread.start();
         try {
             mThread.join();
-            for(int i =0 ;i<MainActivity.inlist.size();i++)
+            for (int i = 0; i < MainActivity.inlist.size(); i++)
                 barray[i].setImageBitmap(bitmap[i]);
         } catch (InterruptedException e) {
         }
-
     }
 
-    public void onClickButton(View v)
-    {
-
-        switch(v.getId()) {
-
-
+    public void onClickButton(View v) {
+        switch (v.getId()) {
             case R.id.image1:
                 AlertDialog.Builder dig = new AlertDialog.Builder(this);
                 dig.setTitle("재료 설명");
-              dig.setItems(R.array.ingregroup,
-                      new DialogInterface.OnClickListener() {
-                          @Override
-                          public void onClick(DialogInterface dialog, int which) {
-                              String[] ingregroup = getResources().getStringArray(R.array.ingregroup);
-
-                              Toast.makeText(getApplicationContext(),ingregroup[which],Toast.LENGTH_SHORT).show();
-                          }
-                      });
-              dig.show();
-              break;
+                dig.setItems(R.array.ingregroup,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String[] ingregroup = getResources().getStringArray(R.array.ingregroup);
+                                makeDialog(v.getId(), which);
+                                //Toast.makeText(getApplicationContext(), ingregroup[which], Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                dig.show();
+                break;
 
             case R.id.image2:
                 AlertDialog.Builder dig2 = new AlertDialog.Builder(this);
@@ -110,8 +104,8 @@ public class Info extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String[] ingregroup = getResources().getStringArray(R.array.ingregroup);
-
-                                Toast.makeText(getApplicationContext(),ingregroup[which],Toast.LENGTH_SHORT).show();
+                                makeDialog(v.getId(), which);
+                                //Toast.makeText(getApplicationContext(), ingregroup[which], Toast.LENGTH_SHORT).show();
                             }
                         });
                 dig2.show();
@@ -126,8 +120,8 @@ public class Info extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String[] ingregroup = getResources().getStringArray(R.array.ingregroup);
-
-                                Toast.makeText(getApplicationContext(),ingregroup[which],Toast.LENGTH_SHORT).show();
+                                makeDialog(v.getId(), which);
+                                //Toast.makeText(getApplicationContext(), ingregroup[which], Toast.LENGTH_SHORT).show();
                             }
                         });
                 dig3.show();
@@ -142,8 +136,8 @@ public class Info extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String[] ingregroup = getResources().getStringArray(R.array.ingregroup);
-
-                                Toast.makeText(getApplicationContext(),ingregroup[which],Toast.LENGTH_SHORT).show();
+                                makeDialog(v.getId(), which);
+                                //Toast.makeText(getApplicationContext(), ingregroup[which], Toast.LENGTH_SHORT).show();
                             }
                         });
                 dig4.show();
@@ -157,8 +151,8 @@ public class Info extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String[] ingregroup = getResources().getStringArray(R.array.ingregroup);
-
-                                Toast.makeText(getApplicationContext(),ingregroup[which],Toast.LENGTH_SHORT).show();
+                                makeDialog(v.getId(), which);
+                                //Toast.makeText(getApplicationContext(), ingregroup[which], Toast.LENGTH_SHORT).show();
                             }
                         });
                 dig5.show();
@@ -172,15 +166,25 @@ public class Info extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String[] ingregroup = getResources().getStringArray(R.array.ingregroup);
-
-                                Toast.makeText(getApplicationContext(),ingregroup[which],Toast.LENGTH_SHORT).show();
+                                makeDialog(v.getId(), which);
+                                //Toast.makeText(getApplicationContext(), ingregroup[which], Toast.LENGTH_SHORT).show();
                             }
                         });
                 dig6.show();
                 break;
-
-
         }
 
+
+    }
+
+    public void makeDialog(int id, int which) {
+        String[] ingregroup = getResources().getStringArray(R.array.ingregroup);
+        AlertDialog.Builder dig = new AlertDialog.Builder(this);
+
+        dig.setTitle(ingregroup[which]);
+
+        dig.setMessage("test value. Need to modify");
+
+        dig.show();
     }
 }
