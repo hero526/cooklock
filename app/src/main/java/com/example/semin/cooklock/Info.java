@@ -89,7 +89,7 @@ public class Info extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String[] ingregroup = getResources().getStringArray(R.array.ingregroup);
-                                makeDialog(v.getId(), which);
+                                makeDialog(v.getId(), which,0);
                                 //Toast.makeText(getApplicationContext(), ingregroup[which], Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -104,7 +104,7 @@ public class Info extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String[] ingregroup = getResources().getStringArray(R.array.ingregroup);
-                                makeDialog(v.getId(), which);
+                                makeDialog(v.getId(), which,1);
                                 //Toast.makeText(getApplicationContext(), ingregroup[which], Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -120,7 +120,7 @@ public class Info extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String[] ingregroup = getResources().getStringArray(R.array.ingregroup);
-                                makeDialog(v.getId(), which);
+                                makeDialog(v.getId(), which,2);
                                 //Toast.makeText(getApplicationContext(), ingregroup[which], Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -136,7 +136,7 @@ public class Info extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String[] ingregroup = getResources().getStringArray(R.array.ingregroup);
-                                makeDialog(v.getId(), which);
+                                makeDialog(v.getId(), which,3);
                                 //Toast.makeText(getApplicationContext(), ingregroup[which], Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -151,7 +151,7 @@ public class Info extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String[] ingregroup = getResources().getStringArray(R.array.ingregroup);
-                                makeDialog(v.getId(), which);
+                                makeDialog(v.getId(), which,4);
                                 //Toast.makeText(getApplicationContext(), ingregroup[which], Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -166,7 +166,7 @@ public class Info extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String[] ingregroup = getResources().getStringArray(R.array.ingregroup);
-                                makeDialog(v.getId(), which);
+                                makeDialog(v.getId(), which,5);
                                 //Toast.makeText(getApplicationContext(), ingregroup[which], Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -177,13 +177,18 @@ public class Info extends AppCompatActivity {
 
     }
 
-    public void makeDialog(int id, int which) {
+    public void makeDialog(int id, int which,int num) {
         String[] ingregroup = getResources().getStringArray(R.array.ingregroup);
         AlertDialog.Builder dig = new AlertDialog.Builder(this);
 
         dig.setTitle(ingregroup[which]);
 
-        dig.setMessage("test value. Need to modify");
+        if(which ==0)
+            dig.setMessage(MainActivity.inlist.get(num).getToBuy());
+        else if(which == 1)
+            dig.setMessage(MainActivity.inlist.get(num).getToMaintain());
+        else if(which ==2)
+            dig.setMessage(MainActivity.inlist.get(num).getToAccept());
 
         dig.show();
     }
