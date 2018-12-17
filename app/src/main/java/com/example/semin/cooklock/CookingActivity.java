@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +33,11 @@ public class CookingActivity extends AppCompatActivity {
 
     CountDownTimer cTimer = null;
     Vibrator vibrator = null;
+
+    SoundPool sound = new SoundPool(1, AudioManager.STREAM_ALARM, 0);
+    int beepId;
+    int pageId;
+
     int cur_sessionNum = 0;
     ArrayList<Recipe_Seq> list = new ArrayList<>();
     Recipe_Seq cur_session;
@@ -47,7 +54,8 @@ public class CookingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cooking);
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-
+        beepId = sound.load(this, R.raw.beep, 1);
+        pageId = sound.load(this, R.raw.nextpage, 1);
         InputStream inputStream = getResources().openRawResource(R.raw.recipe_sequence);
 
         Scanner scanner = new Scanner(inputStream);
@@ -93,6 +101,7 @@ public class CookingActivity extends AppCompatActivity {
 
     public void onClickButton(View view) {
         cancelTimer();
+        sound.play(pageId, 1.0F, 1.0F,  1,  0,  1.0F);
         remain_Time = session_Time = 0;
         if(view.getId() == R.id.prevButton) {
             if (cur_sessionNum < 2) return;
@@ -177,6 +186,7 @@ public class CookingActivity extends AppCompatActivity {
             }
             public void onFinish() {
                 ((TextView)findViewById(R.id.remainTime)).setText("완료!");
+                sound.play(beepId, 1.0F, 1.0F,  1,  1,  1.0F);
                 vibrator.vibrate(1000);
             }
         };
