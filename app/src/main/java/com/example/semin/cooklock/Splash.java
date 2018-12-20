@@ -7,6 +7,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class Splash extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        try {
+            Thread.sleep(3000);
+            // MainActivity.class 자리에 다음에 넘어갈 액티비티를 넣어주기
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("state", "launch");
+            startActivity(intent);
+            finish();
+        }catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
+/*
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,5 +49,5 @@ public class Splash extends Activity {
     public void onBackPressed() {
         //초반 플래시 화면에서 넘어갈때 뒤로가기 버튼 못누르게 함
     }
-
+    */
 }
