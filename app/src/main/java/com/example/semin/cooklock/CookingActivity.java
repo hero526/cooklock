@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -92,8 +93,8 @@ public class CookingActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.sessionDisp))
                 .setText("요리를 시작합니다.");
-        ((Button) findViewById(R.id.nextButton))
-                .setText("시작");
+        //((ImageButton) findViewById(R.id.nextButton))
+                //.setText("시작");
 
         ((ProgressBar) findViewById(R.id.progressBar))
                 .setMax(sessionNum);
@@ -149,7 +150,7 @@ public class CookingActivity extends AppCompatActivity {
 
             cur_sessionNum++;
 
-            ((Button) findViewById(R.id.nextButton)).setText("다음");
+           // ((ImageButton) findViewById(R.id.nextButton)).setText("다음");
             ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
             progressBar.setProgress(cur_sessionNum);

@@ -27,10 +27,14 @@
         android:layout_weight="1"
         android:text="완성!" />
 
-    <Button
+    <ImageButton
+        android:id="@+id/imageButton5"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="150dp"
+        android:layout_marginLeft="10dp"
+        android:backgroundTint="@android:color/transparent"
         android:onClick="goCommunity"
-        android:text="커뮤니티에 올리기" />
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/upload" />
+
 </LinearLayout>
