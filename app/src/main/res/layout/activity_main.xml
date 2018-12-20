@@ -16,6 +16,7 @@
         app:srcCompat="@drawable/logo"
         tools:layout_editor_absoluteX="152dp" />
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="64dp"
@@ -26,13 +27,15 @@
 
         <EditText
             android:id="@+id/editText"
-            android:layout_width="211dp"
-            android:layout_height="30dp"
+            android:layout_width="209dp"
+            android:layout_height="24dp"
             android:layout_gravity="bottom"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="12dp"
-            android:background="@drawable/searchbar_main"
+            android:background="@drawable/search_bar_light"
             android:paddingLeft="32dp"
+            android:hint="요리명을 입력하세요!"
+            android:textColorHint="#dfdfdf"
             android:textColor="@android:color/background_dark" />
 
         <ImageButton
@@ -48,10 +51,22 @@
 
     </LinearLayout>
 
+    <!--
+    <Button
+        android:id="@+id/button"
+        android:layout_width="243dp"
+        android:layout_height="171dp"
+        android:layout_gravity="center_horizontal"
+        android:onClick="showIngredient"
+        android:text="재료검색" />
+ -->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="47dp"
+        android:layout_margin="20dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -92,7 +107,6 @@
                 android:layout_marginRight="0dp"
                 android:layout_marginBottom="5dp"
                 android:gravity="center"
-                android:text="이달의 재료"
                 android:textColor="#ff0400ff"
                 android:textSize="30dp" />
         </RelativeLayout>
@@ -100,21 +114,12 @@
 
     </LinearLayout>
 
-    <!--
-    <Button
-        android:id="@+id/button"
-        android:layout_width="243dp"
-        android:layout_height="171dp"
-        android:layout_gravity="center_horizontal"
-        android:onClick="showIngredient"
-        android:text="재료검색" />
- -->
-
     <ImageButton
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="129dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="13dp"
         android:backgroundTint="@android:color/transparent"
         android:onClick="showIngredient"
         android:scaleType="centerInside"
@@ -125,6 +130,7 @@
         android:layout_width="match_parent"
         android:layout_height="123dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="13dp"
         android:backgroundTint="@android:color/transparent"
         android:onClick="goCommunity"
         android:scaleType="centerInside"
