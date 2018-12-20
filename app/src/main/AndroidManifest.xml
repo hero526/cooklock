@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.semin.cooklock">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,19 +15,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".MainActivity">
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <activity android:name=".Splash"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".MainActivity"/>
         <activity android:name=".CompleteActivity" />
         <activity android:name=".IngredientActivity" />
         <activity android:name=".RecipeActivity" />
         <activity android:name=".CookingActivity" />
-        <activity android:name=".IngredientMonthlyInfo" />
+        <activity android:name=".Info" />
+
+
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -38,8 +47,6 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".Info" />
-        <activity android:name=".Splash"></activity>
     </application>
 
 </manifest>

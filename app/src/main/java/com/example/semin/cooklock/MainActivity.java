@@ -1,5 +1,6 @@
 package com.example.semin.cooklock;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         editText = (EditText)findViewById(R.id.editText);
         button2 = (ImageButton)findViewById(R.id.button2);
         textView = (TextView)findViewById(R.id.month_ingredient);
